@@ -1,7 +1,18 @@
-import React from 'react';
+import React, { use } from 'react';
 import { Link, NavLink } from 'react-router';
+import { AuthContext } from '../Provider/AuthProvider';
 
 const Navbar = () => {
+  const {user, logoutUser } = use(AuthContext)
+  const hangleLogout = () => {
+    logoutUser()
+    .then(() => {
+      alert('sign out successfully')
+    })
+    .catch(error => {
+      console.log(error)
+    })
+  }
     return (
        <div className="navbar bg-base-100 shadow-sm">
   <div className="navbar-start">
@@ -23,8 +34,15 @@ const Navbar = () => {
     </ul>
   </div>
   <div className="navbar-end">
-    <Link to='/login'>Login</Link>
-    <Link to='/register'>Register</Link>
+   {
+    user? <>
+      <Link onClick={hangleLogout} className='btn'>Logout</Link>
+    </> :
+    <>
+    <Link className='btn mr-3' to='/login'>Login</Link>
+    <Link className='btn' to='/register'>Register</Link>
+    </>
+   }
   </div>
 </div>
     );
