@@ -11,6 +11,7 @@ import Home from './components/Home';
 import Login from './pages/Login';
 import AuthProvider from './Provider/AuthProvider';
 import Register from './pages/Register';
+import AddCourse from './pages/AddCourse';
 
 const router = createBrowserRouter([
   {
@@ -28,6 +29,10 @@ const router = createBrowserRouter([
       {
         path: '/register',
         element: <Register></Register>
+      },
+      {
+        path: '/add-course',
+        element: <AddCourse></AddCourse>
       }
     ]
   },

@@ -45,7 +45,7 @@ const HeroSlider = () => {
     autoplaySpeed: 6000,
     arrows: false,
     beforeChange: (oldIndex, newIndex) => {
-      setCurrentSlide(newIndex); // Slide change হলে state আপডেট হবে
+      setCurrentSlide(newIndex); 
     }
   };
 
@@ -69,7 +69,7 @@ const HeroSlider = () => {
                 transition={{ duration: 0.6 }}
                 className="relative text-center text-white px-4 z-10"
               >
-                <h2 className="text-3xl md:text-5xl font-bold mb-4">{slide.title}</h2>
+                <h2 className="text-4xl md:text-5xl font-bold mb-4">{slide.title}</h2>
                 <p className="text-lg md:text-2xl">{slide.subtitle}</p>
               </motion.div>
             )}
