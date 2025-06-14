@@ -1,8 +1,10 @@
-import React, { use } from 'react';
+import React, { use, useState } from 'react';
 import { AuthContext } from '../Provider/AuthProvider';
+import { FaEye, FaEyeSlash } from 'react-icons/fa';
 
 const Login = () => {
     const {loginUser, signInGoogle, signInGithub } = use(AuthContext)
+     const [show, setShow] = useState(true)
 
     const handleLogin = (e) => {
         e.preventDefault()
@@ -48,9 +50,13 @@ signInGithub()
                         <label className="label">Email</label>
                         <input type="email" name='email' className="input" placeholder="Email" />
 
-                        <label className="label">Password</label>
-                        <input type="password" name='password' className="input" placeholder="Password" />
+                        <div className='relative'>
+                            <label className="label">Password</label>
+                        <input type={show ? 'text' : 'password'} name='password' className="input" placeholder="Password" />
 
+                         <button onClick={() => { setShow(!show) }} style={{ zIndex: 10 }} className='btn btn-xs absolute bottom-2 right-6'>{show ? <FaEyeSlash size={18} /> : <FaEye size={18} />}</button>
+
+                        </div>
                         <button className="btn btn-neutral mt-4">Login</button>
                     </form>
 
