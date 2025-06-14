@@ -1,6 +1,9 @@
-import React from "react";
+import React, { use } from "react";
+import { AuthContext } from "../Provider/AuthProvider";
+import axios from "axios";
 
 const AddCourse = () => {
+    const {user} = use(AuthContext)
     const handleAddCourse = (e) => {
         e.preventDefault()
         const title = e.target.title.value;
@@ -8,7 +11,27 @@ const AddCourse = () => {
         const image = e.target.image.value;
         const duration = e.target.duration.value;
         console.log(title, description, image, duration)
+
+        const newCourse = {
+            title,
+            description,
+            image,
+            duration,
+            instructorEmail: user?.displayName,
+            instructorName: user?.email,
+            createdAt: new Date().toISOString()
+
+        }
+        
+        axios.post('http://localhost:3000/add-course', newCourse)
+        .then(res => {
+            console.log('course added',res.data)
+        })
+        .catch(error => {
+            console.log('error adding course',error)
+        })
     }
+    
     return (
         <div className="max-w-2xl mx-auto p-6 bg-white shadow-lg rounded-lg mt-10">
             <h2 className="text-2xl font-bold mb-6 text-center">Add New Course</h2>
