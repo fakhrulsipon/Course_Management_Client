@@ -26,6 +26,7 @@ const Navbar = () => {
             <li><NavLink to='/'>Home</NavLink></li>
             <li><NavLink to='/add-course'>Add Course</NavLink></li>
             <li><NavLink to='/manage-course'>Manage Course</NavLink></li>
+            <li><NavLink to='/my-enrolled'>My Enrolled</NavLink></li>
           </ul>
         </div>
         <a className="btn btn-ghost text-xl">Course Management </a>
@@ -35,6 +36,7 @@ const Navbar = () => {
           <li><NavLink to='/'>Home</NavLink></li>
           <li><NavLink to='/add-course'>Add Course</NavLink></li>
           <li><NavLink to='/manage-course'>Manage Course</NavLink></li>
+          <li><NavLink to='/my-enrolled'>My Enrolled</NavLink></li>
         </ul>
       </div>
       <div className="navbar-end">

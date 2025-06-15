@@ -15,6 +15,7 @@ import AddCourse from './pages/AddCourse';
 import CourseDetails from './pages/CourseDetails';
 import ManageCourses from './pages/ManageCourses';
 import EditCourse from './pages/EditCourse';
+import MyEnrolled from './pages/MyEnrolled';
 
 const router = createBrowserRouter([
   {
@@ -50,6 +51,10 @@ const router = createBrowserRouter([
         path: '/edit-course/:id',
         loader: ({params}) => fetch(`http://localhost:3000/course-details/${params.id}`),
         element: <EditCourse></EditCourse>
+      },
+      {
+        path: '/my-enrolled',
+        element: <MyEnrolled></MyEnrolled>
       }
     ]
   },
