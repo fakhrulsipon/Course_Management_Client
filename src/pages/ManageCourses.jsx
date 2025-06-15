@@ -2,6 +2,7 @@ import React, { use, useEffect, useState } from 'react';
 import { AuthContext } from '../Provider/AuthProvider';
 import axios from 'axios';
 import { Link } from 'react-router';
+import Swal from 'sweetalert2';
 
 const ManageCourses = () => {
     const { user } = use(AuthContext)
@@ -19,6 +20,38 @@ const ManageCourses = () => {
                 })
         }
     }, [user])
+
+    const handleDelete = (id) => {
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, delete it!"
+        }).then((result) => {
+            if (result.isConfirmed) {
+
+                axios.delete(`http://localhost:3000/delete-course/${id}`)
+                    .then(res => {
+                        if (res.data.deletedCount) {
+                            Swal.fire({
+                                title: "Deleted!",
+                                text: "Your file has been deleted.",
+                                icon: "success"
+                            });
+                            const remaining = myCourses.filter(course => course._id !== id)
+                            setMyCourses(remaining)
+                        }
+                    })
+                    .catch(error => {
+                        console.log(error)
+                    })
+            }
+        });
+
+    }
     return (
         <div className="overflow-x-auto my-10 px-4">
             <h2 className="text-2xl font-bold mb-6 text-center text-gray-800">Your Added Courses</h2>
@@ -40,7 +73,7 @@ const ManageCourses = () => {
                                     <Link to={`/edit-course/${course._id}`}><button className="bg-blue-500 text-white px-4 py-1 rounded hover:bg-blue-600 transition">
                                         Edit
                                     </button></Link>
-                                    <button className="bg-red-500 text-white px-4 py-1 rounded hover:bg-red-600 transition">
+                                    <button onClick={() => handleDelete(course._id)} className="bg-red-500 text-white px-4 py-1 rounded hover:bg-red-600 transition">
                                         Delete
                                     </button>
                                 </div>
@@ -54,3 +87,6 @@ const ManageCourses = () => {
 };
 
 export default ManageCourses;
+
+
+
