@@ -17,8 +17,8 @@ const AddCourse = () => {
             description,
             image,
             duration,
-            instructorEmail: user?.displayName,
-            instructorName: user?.email,
+            instructorEmail: user?.email,
+            instructorName: user?.displayName,
             createdAt: new Date().toISOString()
 
         }

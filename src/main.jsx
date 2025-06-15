@@ -13,6 +13,8 @@ import AuthProvider from './Provider/AuthProvider';
 import Register from './pages/Register';
 import AddCourse from './pages/AddCourse';
 import CourseDetails from './pages/CourseDetails';
+import ManageCourses from './pages/ManageCourses';
+import EditCourse from './pages/EditCourse';
 
 const router = createBrowserRouter([
   {
@@ -39,6 +41,15 @@ const router = createBrowserRouter([
         path: '/course-details/:id',
         loader: ({params}) => fetch(`http://localhost:3000/course-details/${params.id}`),
         element: <CourseDetails></CourseDetails>
+      },
+      {
+        path: '/manage-course',
+        element: <ManageCourses></ManageCourses>
+      },
+      {
+        path: '/edit-course/:id',
+        loader: ({params}) => fetch(`http://localhost:3000/course-details/${params.id}`),
+        element: <EditCourse></EditCourse>
       }
     ]
   },
