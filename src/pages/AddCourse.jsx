@@ -1,16 +1,22 @@
-import React, { use } from "react";
+import React, { use, useEffect } from "react";
 import { AuthContext } from "../Provider/AuthProvider";
 import axios from "axios";
+import Swal from "sweetalert2";
 
 const AddCourse = () => {
-    const {user} = use(AuthContext)
+
+    useEffect(() => {
+        document.title = 'Add Course | EduPath';
+    }, []);
+
+    const { user } = use(AuthContext)
     const handleAddCourse = (e) => {
         e.preventDefault()
         const title = e.target.title.value;
         const description = e.target.description.value;
         const image = e.target.image.value;
         const duration = e.target.duration.value;
-        console.log(title, description, image, duration)
+        // console.log(title, description, image, duration)
 
         const newCourse = {
             title,
@@ -22,18 +28,32 @@ const AddCourse = () => {
             createdAt: new Date().toISOString()
 
         }
-        
+
         axios.post('http://localhost:3000/add-course', newCourse)
-        .then(res => {
-            console.log('course added',res.data)
-        })
-        .catch(error => {
-            console.log('error adding course',error)
-        })
+            .then(res => {
+                if (res.data.insertedId) {
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Course Added',
+                        text: 'New course added successfully!',
+                        timer: 1500,
+                        showConfirmButton: false
+                    });
+                }
+            })
+            .catch(error => {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: error || 'Failed to add course. Please try again.',
+                    timer: 2000,
+                    showConfirmButton: false
+                });
+            })
     }
-    
+
     return (
-        <div className="max-w-2xl mx-auto p-6 bg-white shadow-lg rounded-lg mt-10">
+        <div className="max-w-2xl mx-auto p-6 bg-white shadow-lg rounded-lg mt-10 border-2 border-emerald-400">
             <h2 className="text-2xl font-bold mb-6 text-center">Add New Course</h2>
 
             <form onSubmit={handleAddCourse} className="space-y-4">

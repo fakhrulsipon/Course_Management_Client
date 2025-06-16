@@ -5,20 +5,31 @@ import { Link } from 'react-router';
 
 const LatestCourse = () => {
   const [courses, setCourses] = useState([]);
-  
+  const [loading, setLoading] = useState(false)
+
 
   useEffect(() => {
+    setLoading(true)
     axios.get('http://localhost:3000/latest-course')
       .then(res => {
         setCourses(res.data);
+        setLoading(false)
       })
       .catch(error => {
         console.error('Error fetching latest courses:', error);
       });
   }, []);
 
+  if (loading) {
+    return (
+      <div className="flex justify-center items-center h-64">
+        <span className="loading loading-bars loading-xl text-green-600"></span>
+      </div>
+    );
+  }
+
   return (
-    <div className="max-w-6xl mx-auto px-4 py-10">
+    <div className="w-11/12 mx-auto px-4 py-10">
       <h2 className="text-3xl font-bold text-center mb-8">Latest Courses</h2>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         {courses.map(course => (
@@ -28,9 +39,9 @@ const LatestCourse = () => {
             <p className="text-gray-600">{new Date(course.createdAt).toLocaleDateString()}</p>
             <p className="text-gray-700 mt-2">{course.description?.slice(0, 80)}...</p>
             <Link to={`/course-details/${course._id}`}>
-            <button className="mt-4 bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700">
-              Details
-            </button>
+              <button className="mt-4 bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700">
+                Details
+              </button>
             </Link>
           </div>
         ))}

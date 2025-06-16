@@ -1,7 +1,15 @@
-import React, { use, useState } from 'react';
+import React, { use, useEffect, useState } from 'react';
 import { AuthContext } from '../Provider/AuthProvider';
+import Swal from 'sweetalert2';
+import { useNavigation } from 'react-router';
 
 const Register = () => {
+
+    useEffect(() => {
+        document.title = 'Register | EduPath';
+    }, []);
+
+    const navigate = useNavigation()
     const { registerUser, setUser, updateUserProfile } = use(AuthContext)
     const [error, setError] = useState('');
     const handleRegister = (e) => {
@@ -11,7 +19,7 @@ const Register = () => {
         const email = e.target.email.value;
         const password = e.target.password.value;
         const confirmPassword = e.target.confirmPassword.value;
-        console.log(name, photo, email, password, confirmPassword)
+        // console.log(name, photo, email, password, confirmPassword)
 
         setError('');
 
@@ -31,19 +39,39 @@ const Register = () => {
 
         registerUser(email, password)
             .then(res => {
-                const updateUser = {displayName:name, photoURL: photo
-}
+                const updateUser = {
+                    displayName: name, photoURL: photo
+                }
                 updateUserProfile(updateUser)
-                .then( () => {
-              setUser({...res.user, displayName:name, photoURL: photo})
-              alert('update profile')
-                })
-                .catch(error => {
-                    console.log(error)
-                })
+                    .then(() => {
+                        setUser({ ...res.user, displayName: name, photoURL: photo })
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Register Successful',
+                            text: `Welcome, ${res?.user?.displayName || 'User'}!`,
+                            timer: 1500,
+                            showConfirmButton: false
+                        });
+                        navigate('/')
+                    })
+                    .catch(error => {
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Failed',
+                            text: error.message || 'Something went wrong!',
+                            timer: 1500,
+                            showConfirmButton: false
+                        });
+                    })
             })
             .catch(error => {
-                console.log(error)
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Register Failed',
+                    text: error.message || 'Something went wrong!',
+                    timer: 1500,
+                    showConfirmButton: false
+                });
             })
     }
     return (

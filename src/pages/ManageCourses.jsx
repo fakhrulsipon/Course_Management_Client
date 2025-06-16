@@ -5,21 +5,42 @@ import { Link } from 'react-router';
 import Swal from 'sweetalert2';
 
 const ManageCourses = () => {
-    const { user } = use(AuthContext)
-    const [myCourses, setMyCourses] = useState([]);
-    console.log(myCourses)
 
     useEffect(() => {
+        document.title = 'Manage Courses | EduPath';
+    }, []);
+
+    const { user } = use(AuthContext)
+    const [myCourses, setMyCourses] = useState([]);
+    const [loading, setLoading] = useState(true)
+    // console.log(myCourses)
+
+    useEffect(() => {
+        setLoading(true)
         if (user?.email) {
             axios.get(`http://localhost:3000/my-courses?email=${user.email}`)
                 .then(res => {
                     setMyCourses(res.data)
+                    setLoading(false)
                 })
                 .catch(error => {
-                    console.log(error)
+                    Swal.fire({
+                        title: "Error!",
+                        text: error.message,
+                        icon: "error"
+                    });
+                    setLoading(false)
                 })
         }
     }, [user])
+
+     if(loading){
+    return (
+      <div className="flex justify-center items-center h-64">
+        <span className="loading loading-bars loading-xl text-green-600"></span>
+      </div>
+    );
+  }
 
     const handleDelete = (id) => {
         Swal.fire({
@@ -46,7 +67,11 @@ const ManageCourses = () => {
                         }
                     })
                     .catch(error => {
-                        console.log(error)
+                        Swal.fire({
+                            title: "Error!",
+                            text: error.message,
+                            icon: "error"
+                        });
                     })
             }
         });

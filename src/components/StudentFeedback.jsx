@@ -2,7 +2,7 @@ import React from 'react';
 
 const StudentFeedback = () => {
     return (
-        <div className="bg-white py-10 px-4">
+        <div className="bg-white py-10 w-11/12 mx-auto">
   <h2 className="text-2xl font-bold text-center mb-6">What Our Students Say</h2>
   <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
     <div className="bg-gray-100 p-6 rounded-lg shadow-sm">

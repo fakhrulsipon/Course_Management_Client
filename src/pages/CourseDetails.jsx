@@ -4,21 +4,26 @@ import { AuthContext } from '../Provider/AuthProvider';
 import axios from 'axios';
 
 const CourseDetails = () => {
+
+    useEffect(() => {
+        document.title = 'Course Details | EduPath';
+    }, []);
+
     const course = useLoaderData();
     const { user } = use(AuthContext)
     const [enrolled, setEnrolled] = useState(false);
 
     useEffect(() => {
-  if (user?.email) {
-    axios.get(`http://localhost:3000/check-enroll?email=${user.email}&courseId=${course._id}`)
-      .then(res => {
-        setEnrolled(res.data.enrolled);
-      })
-      .catch(err => {
-        console.error(err);
-      });
-  }
-}, [user, course._id]);
+        if (user?.email) {
+            axios.get(`http://localhost:3000/check-enroll?email=${user.email}&courseId=${course._id}`)
+                .then(res => {
+                    setEnrolled(res.data.enrolled);
+                })
+                .catch(err => {
+                    console.error(err);
+                });
+        }
+    }, [user, course._id]);
 
     const handleEnroll = () => {
         if (!user) return;

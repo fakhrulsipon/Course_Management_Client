@@ -1,9 +1,15 @@
 
 import axios from 'axios';
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useLoaderData, useNavigate } from 'react-router';
+import Swal from 'sweetalert2';
 
 const EditCourse = () => {
+
+    useEffect(() => {
+        document.title = 'Edit Course | EduPath';
+    }, []);
+
     const course = useLoaderData()
     const navigate = useNavigate()
 
@@ -17,12 +23,23 @@ const EditCourse = () => {
         axios.put(`http://localhost:3000/update-course/${course._id}`, editCourse)
             .then(res => {
                 if (res.data.modifiedCount) {
-                    alert('Course updated successfully!');
+                    Swal.fire({
+                        title: "Updated!",
+                        text: "Course updated successfully.",
+                        icon: "success",
+                        timer: 1500,
+                        showConfirmButton: false,
+                        timerProgressBar: true
+                    });
                     navigate('/manage-course')
                 }
             })
             .catch(error => {
-                console.log(error)
+                Swal.fire({
+                    title: "Error!",
+                    text: error.message,
+                    icon: "error"
+                });
             })
 
     }

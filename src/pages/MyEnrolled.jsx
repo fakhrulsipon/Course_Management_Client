@@ -4,6 +4,11 @@ import { AuthContext } from '../Provider/AuthProvider';
 import Swal from 'sweetalert2';
 
 const MyEnrolled = () => {
+
+    useEffect(() => {
+        document.title = 'My Enrolled Courses | EduPath';
+    }, []);
+
     const { user } = use(AuthContext)
     const [myEnrolled, setMyEnrolled] = useState([]);
     console.log(myEnrolled)
@@ -14,7 +19,11 @@ const MyEnrolled = () => {
                     setMyEnrolled(res.data)
                 })
                 .catch(error => {
-                    console.log(error)
+                    Swal.fire({
+                        title: "Error!",
+                        text: error.message,
+                        icon: "error"
+                    });
                 })
         }
     }, [user])
@@ -43,7 +52,11 @@ const MyEnrolled = () => {
                         }
                     })
                     .catch(error => {
-                        console.log(error)
+                        Swal.fire({
+                            title: "Error!",
+                            text: error.message,
+                            icon: "error"
+                        });
                     })
 
             }

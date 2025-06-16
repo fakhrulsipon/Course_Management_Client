@@ -1,48 +1,96 @@
-import React, { use, useState } from 'react';
+import React, { use, useEffect, useState } from 'react';
 import { AuthContext } from '../Provider/AuthProvider';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
+import { useLocation, useNavigate } from 'react-router';
+import Swal from 'sweetalert2';
 
 const Login = () => {
-    const {loginUser, signInGoogle, signInGithub } = use(AuthContext)
-     const [show, setShow] = useState(true)
+
+    useEffect(() => {
+        document.title = 'Login | EduPath';
+    }, []);
+
+    const location = useLocation()
+    const navigate = useNavigate()
+    const { loginUser, signInGoogle, signInGithub } = use(AuthContext)
+    const [show, setShow] = useState(false)
 
     const handleLogin = (e) => {
         e.preventDefault()
         const email = e.target.email.value;
         const password = e.target.password.value;
-        console.log(email, password)
+
         loginUser(email, password)
-        .then(res => {
-            console.log(res.user)
-        })
-        .catch(error => {
-            console.log(error)
-        })
+            .then(res => {
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Login Successful',
+                    text: `Welcome, ${res?.user?.displayName || 'User'}!`,
+                    timer: 1500,
+                    showConfirmButton: false
+                });
+                navigate(location.state || '/')
+            })
+            .catch(error => {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Login Failed',
+                    text: error.message || 'Something went wrong!',
+                    timer: 1500,
+                    showConfirmButton: false
+                });
+            })
     }
 
-const handleGoogle = () => {
-signInGoogle()
-.then(res => {
-    console.log(res.user)
-})
-.catch(error => {
-    console.log(error)
-})
-}
+    const handleGoogle = () => {
+        signInGoogle()
+            .then(res => {
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Login Successful',
+                    text: `Welcome, ${res?.user?.displayName || 'User'}!`,
+                    timer: 1500,
+                    showConfirmButton: false
+                });
+                navigate(location.state || '/')
+            })
+            .catch(error => {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Login Failed',
+                    text: error.message || 'Something went wrong!',
+                    timer: 1500,
+                    showConfirmButton: false
+                });
+            })
+    }
 
-const handleGithub = () => {
-signInGithub()
-.then(res => {
-    console.log(res.user)
-})
-.catch(error => {
-    console.log(error)
-})
-}
+    const handleGithub = () => {
+        signInGithub()
+            .then(res => {
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Login Successful',
+                    text: `Welcome, ${res?.user?.displayName || 'User'}!`,
+                    timer: 1500,
+                    showConfirmButton: false
+                });
+                navigate(location.state || '/')
+            })
+            .catch(error => {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Login Failed',
+                    text: error.message || 'Something went wrong!',
+                    timer: 1500,
+                    showConfirmButton: false
+                });
+            })
+    }
 
     return (
 
-        <div className='flex justify-center  mt-20'>
+        <div className='flex justify-center mt-5 md:mt-10 lg:mt-20'>
             <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
                 <div className="card-body">
                     <h1 className='text-3xl font-bold text-center'>Login Now</h1>
@@ -52,9 +100,9 @@ signInGithub()
 
                         <div className='relative'>
                             <label className="label">Password</label>
-                        <input type={show ? 'text' : 'password'} name='password' className="input" placeholder="Password" />
+                            <input type={show ? 'text' : 'password'} name='password' className="input" placeholder="Password" />
 
-                         <button onClick={() => { setShow(!show) }} style={{ zIndex: 10 }} className='btn btn-xs absolute bottom-2 right-6'>{show ? <FaEyeSlash size={18} /> : <FaEye size={18} />}</button>
+                            <button onClick={() => { setShow(!show) }} style={{ zIndex: 10 }} className='btn btn-xs absolute bottom-2 right-6'>{show ? <FaEyeSlash size={18} /> : <FaEye size={18} />}</button>
 
                         </div>
                         <button className="btn btn-neutral mt-4">Login</button>
