@@ -77,35 +77,85 @@ const Register = () => {
     }
     return (
 
-        <div className='flex justify-center'>
-            <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
-                <h1 className='text-3xl font-bold text-center'>Register Now</h1>
-                <div className="card-body">
-                    <form onSubmit={handleRegister} className="fieldset">
+        <div className="mt-10 flex items-center justify-center min-h-screen bg-gradient-to-tr from-green-50 via-white to-green-100 px-4">
+  <div className="w-full max-w-md bg-white rounded-2xl shadow-lg p-8 transition-transform duration-300 hover:scale-[1.01]">
+    <h1 className="text-4xl font-bold text-center text-green-600 mb-6">Register Now</h1>
 
-                        <label className="label">Name</label>
-                        <input type="text" name='name' className="input" placeholder="Name" />
+    <form onSubmit={handleRegister} className="space-y-4">
 
-                        <label className="label">Photo URL</label>
-                        <input type="text" name='photo' className="input" placeholder="Photo URL" />
+      <div>
+        <label className="block text-sm font-semibold text-gray-700">Name</label>
+        <input
+          type="text"
+          name="name"
+          className="mt-1 w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500"
+          placeholder="Enter your name"
+          required
+        />
+      </div>
 
-                        <label className="label">Email</label>
-                        <input type="email" name='email' className="input" placeholder="Email" />
+      <div>
+        <label className="block text-sm font-semibold text-gray-700">Photo URL</label>
+        <input
+          type="text"
+          name="photo"
+          className="mt-1 w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500"
+          placeholder="Enter your photo URL"
+          required
+        />
+      </div>
 
-                        <label className="label">Password</label>
-                        <input type="password" name='password' className="input" placeholder="Password" />
+      <div>
+        <label className="block text-sm font-semibold text-gray-700">Email</label>
+        <input
+          type="email"
+          name="email"
+          className="mt-1 w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500"
+          placeholder="Enter your email"
+          required
+        />
+      </div>
 
-                        <label className="label">Confirm Password</label>
-                        <input type="password" name='confirmPassword' className="input" placeholder="Confirm Password" />
+      <div>
+        <label className="block text-sm font-semibold text-gray-700">Password</label>
+        <input
+          type="password"
+          name="password"
+          className="mt-1 w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500"
+          placeholder="Enter password"
+          required
+        />
+      </div>
 
-                        {error && <p className="text-red-500 text-sm">{error}</p>}
+      <div>
+        <label className="block text-sm font-semibold text-gray-700">Confirm Password</label>
+        <input
+          type="password"
+          name="confirmPassword"
+          className="mt-1 w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500"
+          placeholder="Confirm password"
+          required
+        />
+      </div>
 
-                        <button className="btn btn-neutral mt-4">Register</button>
-                    </form>
-                </div>
-            </div>
-        </div>
+      {error && <p className="text-red-600 text-sm mt-1">{error}</p>}
 
+      <button
+        type="submit"
+        className="w-full py-2 px-4 bg-green-600 hover:bg-green-700 text-white font-semibold rounded-lg shadow-md transition duration-300"
+      >
+        Register
+      </button>
+    </form>
+
+    <p className="mt-6 text-center text-sm text-gray-600">
+      Already have an account?
+      <a href="/login" className="ml-1 text-green-600 font-semibold hover:underline">
+        Login here
+      </a>
+    </p>
+  </div>
+</div>
     );
 };
 

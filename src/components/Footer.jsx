@@ -4,24 +4,24 @@ const Footer = () => {
   return (
     <footer className="bg-gray-900 text-white py-10 mt-20">
       <div className="max-w-6xl mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-8">
-        
+
         {/* Column 1: Logo & Slogan */}
         <div>
-          <h2 className="text-2xl font-bold mb-2">Edupath</h2>
+          <img className="h-12 w-12 rounded-full mr-2 border-2 border-primary" src="/website-logo.avif" alt="Logo" />
           <p className="text-gray-400">Empowering learners with quality courses and a seamless learning experience.</p>
           <div className="flex gap-4 mt-4">
-           <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="text-xl hover:text-blue-400">
-  <FaFacebookF />
-</a>
-<a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="text-xl hover:text-blue-400">
-  <FaTwitter />
-</a>
-<a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="text-xl hover:text-blue-400">
-  <FaLinkedinIn />
-</a>
-<a href="https://github.com" target="_blank" rel="noopener noreferrer" className="text-xl hover:text-blue-400">
-  <FaGithub />
-</a>
+            <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="text-xl hover:text-blue-400">
+              <FaFacebookF />
+            </a>
+            <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="text-xl hover:text-blue-400">
+              <FaTwitter />
+            </a>
+            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="text-xl hover:text-blue-400">
+              <FaLinkedinIn />
+            </a>
+            <a href="https://github.com" target="_blank" rel="noopener noreferrer" className="text-xl hover:text-blue-400">
+              <FaGithub />
+            </a>
           </div>
         </div>
 
@@ -44,7 +44,7 @@ const Footer = () => {
             <li className="hover:underline">Privacy Policy</li>
           </ul>
         </div>
-        
+
       </div>
       <div className="text-center text-gray-500 text-sm mt-8">
         &copy; {new Date().getFullYear()} CourseHub. All rights reserved.

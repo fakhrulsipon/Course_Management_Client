@@ -1,7 +1,7 @@
 # 📚 CourseMaster - A Complete Course Management System
 
 ## 🌐 Live Website
-[🔗 Visit Live Site](https://your-live-site-url.com)
+[🔗 Visit Live Site](https://subscription-box-2faea.web.app/)
 
 ## 🎯 Project Purpose
 **CourseMaster** is a full-stack course management system where users can:

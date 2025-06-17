@@ -2,9 +2,11 @@ import React, { use, useEffect } from "react";
 import { AuthContext } from "../Provider/AuthProvider";
 import axios from "axios";
 import Swal from "sweetalert2";
+import { useNavigate } from "react-router";
 
 
 const AddCourse = () => {
+    const navigate = useNavigate()
 
 
     useEffect(() => {
@@ -43,6 +45,7 @@ const AddCourse = () => {
                         timer: 1500,
                         showConfirmButton: false
                     });
+                    navigate('/courses')
                 }
             })
             .catch(error => {
