@@ -44,7 +44,7 @@ const router = createBrowserRouter([
       },
       {
         path: '/course-details/:id',
-        loader: ({params}) => fetch(`http://localhost:3000/course-details/${params.id}`),
+        loader: ({params}) => fetch(`https://edupath-server.vercel.app/course-details/${params.id}`),
         hydrateFallbackElement: <span className="loading loading-bars loading-xl"></span>,
         element: <CourseDetails></CourseDetails>
       },
@@ -54,7 +54,7 @@ const router = createBrowserRouter([
       },
       {
         path: '/edit-course/:id',
-        loader: ({params}) => fetch(`http://localhost:3000/course-details/${params.id}`),
+        loader: ({params}) => fetch(`https://edupath-server.vercel.app/course-details/${params.id}`),
         hydrateFallbackElement: <span className="loading loading-bars loading-xl"></span>,
         element: <PrivetRoute><EditCourse></EditCourse></PrivetRoute>
       },

@@ -20,7 +20,7 @@ const EditCourse = () => {
         const editCourse = Object.fromEntries(formData.entries())
         console.log(editCourse)
 
-        axios.put(`http://localhost:3000/update-course/${course._id}`, editCourse)
+        axios.put(`https://edupath-server.vercel.app/update-course/${course._id}`, editCourse)
             .then(res => {
                 if (res.data.modifiedCount) {
                     Swal.fire({
@@ -84,6 +84,18 @@ const EditCourse = () => {
                         className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
                     />
                 </div>
+
+                <div className="mb-4">
+                    <label className="block text-gray-700 font-medium mb-2">Available Seats</label>
+                    <input
+                        type="number"
+                        name="availableSeats"
+                        min="1"
+                        defaultValue={course.availableSeats}
+                        className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
+                    />
+                </div>
+
                 <button
                     type="submit"
                     className="w-full bg-blue-500 text-white font-semibold py-2 rounded-lg hover:bg-blue-600 transition"

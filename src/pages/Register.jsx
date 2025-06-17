@@ -1,7 +1,8 @@
 import React, { use, useEffect, useState } from 'react';
 import { AuthContext } from '../Provider/AuthProvider';
 import Swal from 'sweetalert2';
-import { useNavigation } from 'react-router';
+import { useNavigate } from 'react-router';
+
 
 const Register = () => {
 
@@ -9,7 +10,7 @@ const Register = () => {
         document.title = 'Register | EduPath';
     }, []);
 
-    const navigate = useNavigation()
+    const navigate = useNavigate()
     const { registerUser, setUser, updateUserProfile } = use(AuthContext)
     const [error, setError] = useState('');
     const handleRegister = (e) => {
@@ -76,7 +77,7 @@ const Register = () => {
     }
     return (
 
-        <div className='flex justify-center mt-20'>
+        <div className='flex justify-center'>
             <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
                 <h1 className='text-3xl font-bold text-center'>Register Now</h1>
                 <div className="card-body">

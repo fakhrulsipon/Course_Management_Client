@@ -4,18 +4,20 @@ import { AuthContext } from '../Provider/AuthProvider';
 import axios from 'axios';
 
 const CourseDetails = () => {
+    const course = useLoaderData();
+    const { user } = use(AuthContext);
+
+    const [enrolled, setEnrolled] = useState(false);
+    const [seats, setSeats] = useState(course.availableSeats || 0);
+    const [loading, setLoading] = useState(false);
 
     useEffect(() => {
         document.title = 'Course Details | EduPath';
     }, []);
 
-    const course = useLoaderData();
-    const { user } = use(AuthContext)
-    const [enrolled, setEnrolled] = useState(false);
-
     useEffect(() => {
         if (user?.email) {
-            axios.get(`http://localhost:3000/check-enroll?email=${user.email}&courseId=${course._id}`)
+            axios.get(`https://edupath-server.vercel.app/check-enroll?email=${user.email}&courseId=${course._id}`)
                 .then(res => {
                     setEnrolled(res.data.enrolled);
                 })
@@ -25,21 +27,33 @@ const CourseDetails = () => {
         }
     }, [user, course._id]);
 
-    const handleEnroll = () => {
+    const handleEnrollToggle = async () => {
         if (!user) return;
 
-        const data = {
-            email: user.email,
-            courseId: course._id
-        };
+        setLoading(true);
 
-        axios.post('http://localhost:3000/enroll', data)
-            .then(() => {
-                setEnrolled(true);
-            })
-            .catch(err => {
-                console.error('Enrollment error:', err);
+        try {
+            const { data } = await axios.post('https://edupath-server.vercel.app/enroll', {
+                email: user.email,
+                courseId: course._id
             });
+
+            
+            if (data.message === 'Enrollment removed successfully') {
+                setEnrolled(false);
+                setSeats(prev => prev + 1);
+            }
+
+            
+            if (data.message === 'Enrolled successfully') {
+                setEnrolled(true);
+                setSeats(prev => prev - 1);
+            }
+        } catch (err) {
+            alert(err?.response?.data?.message || 'Something went wrong');
+        } finally {
+            setLoading(false);
+        }
     };
 
     return (
@@ -55,17 +69,27 @@ const CourseDetails = () => {
                 <p className="text-gray-500 mb-2">
                     Posted on: {new Date(course.createdAt).toLocaleDateString()}
                 </p>
-                <p className="text-gray-700">{course.description}</p>
+                <p className="text-gray-700 mb-2">{course.description}</p>
 
-                {/* Enroll Button */}
+                <p className="text-lg font-medium mt-4">
+                    Seats Left: {seats > 0 ? seats : <span className="text-red-500">No seats left</span>}
+                </p>
+
+                {/* Enroll / Unenroll Button */}
                 <div className="mt-6">
-                    <button
-                        onClick={handleEnroll}
-                        disabled={!user || enrolled}
-                        className="disabled:bg-gray-400 disabled:cursor-not-allowed bg-green-600 hover:bg-green-700 text-white px-6 py-2 rounded"
-                    >
-                        {enrolled ? 'Enrolled' : 'Enroll'}
-                    </button>
+                    {
+                        seats > 0 || enrolled ? (
+                            <button
+                                onClick={handleEnrollToggle}
+                                disabled={!user || loading}
+                                className={`px-6 py-2 rounded text-white ${enrolled ? 'bg-red-600 hover:bg-red-700' : 'bg-green-600 hover:bg-green-700'} disabled:bg-gray-400 disabled:cursor-not-allowed`}
+                            >
+                                {enrolled ? 'Unenroll' : 'Enroll'}
+                            </button>
+                        ) : (
+                            <span className="text-red-500 font-semibold">No seats left</span>
+                        )
+                    }
                 </div>
             </div>
         </div>

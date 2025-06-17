@@ -7,7 +7,7 @@ const Footer = () => {
         
         {/* Column 1: Logo & Slogan */}
         <div>
-          <h2 className="text-2xl font-bold mb-2">CourseHub</h2>
+          <h2 className="text-2xl font-bold mb-2">Edupath</h2>
           <p className="text-gray-400">Empowering learners with quality courses and a seamless learning experience.</p>
           <div className="flex gap-4 mt-4">
            <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="text-xl hover:text-blue-400">
@@ -30,8 +30,8 @@ const Footer = () => {
           <h3 className="text-lg font-semibold mb-3">Quick Links</h3>
           <ul className="space-y-2 text-gray-300">
             <li><a href="/" className="hover:underline">Home</a></li>
-            <li><a href="" className="hover:underline">Courses</a></li>
-            <li><a href="" className="hover:underline">Add Course</a></li>
+            <li><a href="/courses" className="hover:underline">Courses</a></li>
+            <li><a href="/about-us" className="hover:underline">About Us</a></li>
           </ul>
         </div>
 
@@ -39,9 +39,9 @@ const Footer = () => {
         <div>
           <h3 className="text-lg font-semibold mb-3">Support</h3>
           <ul className="space-y-2 text-gray-300">
-            <li><a href="" className="hover:underline">FAQs</a></li>
-            <li><a href="" className="hover:underline">Contact Us</a></li>
-            <li><a href="" className="hover:underline">Privacy Policy</a></li>
+            <li className="hover:underline">FAQs</li>
+            <li className="hover:underline">Contact Us</li>
+            <li className="hover:underline">Privacy Policy</li>
           </ul>
         </div>
         

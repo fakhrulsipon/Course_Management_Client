@@ -10,21 +10,27 @@ const GithubProvider = new GithubAuthProvider();
 const AuthProvider = ({children}) => {
     const [user, setUser] = useState(null)
     const [loading, setLoading] = useState(true)
+    console.log(user)
     
  
     const loginUser = (email, password) => {
+        setLoading(true)
         return signInWithEmailAndPassword(auth, email, password)
     }
     const registerUser = (email, password) => {
+        setLoading(true)
         return createUserWithEmailAndPassword(auth, email, password)
     }
     const updateUserProfile = (updateUser) => {
+        setLoading(true)
         return updateProfile(auth.currentUser, updateUser)
     }
     const signInGoogle = () => {
+        setLoading(true)
         return signInWithPopup(auth, provider)
     }
     const signInGithub = () => {
+        setLoading(true)
         return signInWithPopup(auth, GithubProvider)
     }
     const logoutUser = () => {

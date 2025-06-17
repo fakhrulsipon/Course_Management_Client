@@ -17,8 +17,12 @@ const ManageCourses = () => {
 
     useEffect(() => {
         setLoading(true)
-        if (user?.email) {
-            axios.get(`http://localhost:3000/my-courses?email=${user.email}`)
+        if (user?.email ) {
+            axios.get(`https://edupath-server.vercel.app/my-courses?email=${user.email}`, {
+                 headers: {
+                Authorization: `Bearer ${user.accessToken}`
+              }  
+            })
                 .then(res => {
                     setMyCourses(res.data)
                     setLoading(false)
@@ -54,7 +58,7 @@ const ManageCourses = () => {
         }).then((result) => {
             if (result.isConfirmed) {
 
-                axios.delete(`http://localhost:3000/delete-course/${id}`)
+                axios.delete(`https://edupath-server.vercel.app/delete-course/${id}`)
                     .then(res => {
                         if (res.data.deletedCount) {
                             Swal.fire({
@@ -78,7 +82,7 @@ const ManageCourses = () => {
 
     }
     return (
-        <div className="overflow-x-auto my-10 px-4">
+        <div className="overflow-x-auto my-10 px-4 lg:w-11/12 mx-auto">
             <h2 className="text-2xl font-bold mb-6 text-center text-gray-800">Your Added Courses</h2>
             <table className="min-w-full bg-white border border-gray-300 rounded-lg overflow-hidden shadow-md">
                 <thead className="bg-gradient-to-r from-blue-100 to-blue-200 text-gray-700">

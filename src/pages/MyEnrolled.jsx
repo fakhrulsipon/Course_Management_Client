@@ -4,19 +4,25 @@ import { AuthContext } from '../Provider/AuthProvider';
 import Swal from 'sweetalert2';
 
 const MyEnrolled = () => {
-
     useEffect(() => {
         document.title = 'My Enrolled Courses | EduPath';
     }, []);
 
     const { user } = use(AuthContext)
     const [myEnrolled, setMyEnrolled] = useState([]);
-    console.log(myEnrolled)
+    // console.log(myEnrolled)
+    const [loading, setLoading] = useState(true)
+
     useEffect(() => {
         if (user?.email) {
-            axios.get(`http://localhost:3000/enrolled-courses?email=${user.email}`)
+            axios.get(`https://edupath-server.vercel.app/enrolled-courses?email=${user.email}`, {
+              headers: {
+                Authorization: `Bearer ${user.accessToken}`
+              }  
+            })
                 .then(res => {
                     setMyEnrolled(res.data)
+                    setLoading(false)
                 })
                 .catch(error => {
                     Swal.fire({
@@ -24,9 +30,18 @@ const MyEnrolled = () => {
                         text: error.message,
                         icon: "error"
                     });
+                    setLoading(false)
                 })
         }
     }, [user])
+
+    if(loading){
+    return (
+      <div className="flex justify-center items-center h-64">
+        <span className="loading loading-bars loading-xl text-green-600"></span>
+      </div>
+    );
+  }
 
     const handleRemove = (id) => {
         Swal.fire({
@@ -39,7 +54,7 @@ const MyEnrolled = () => {
             confirmButtonText: "Yes, delete it!"
         }).then((result) => {
             if (result.isConfirmed) {
-                axios.delete(`http://localhost:3000/delete-enrolled/${id}/${user.email}`)
+                axios.delete(`https://edupath-server.vercel.app/delete-enrolled/${id}/${user.email}`)
                     .then(res => {
                         if (res.data.deletedCount) {
                             Swal.fire({
@@ -63,8 +78,8 @@ const MyEnrolled = () => {
         });
     }
     return (
-        <div className="overflow-x-auto my-10 px-4">
-            <h2 className="text-2xl font-bold mb-6 text-center text-gray-800">My Enrolled Courses</h2>
+        <div className="overflow-x-auto my-10 w-11/12 mx-auto">
+            <h2 className="text-2xl font-bold mb-6 text-center text-gray-800">Your Enrolled Courses</h2>
             <table className="min-w-full bg-white border border-gray-300 rounded-lg overflow-hidden shadow-md">
                 <thead className="bg-gradient-to-r from-green-100 to-green-200 text-gray-700">
                     <tr>

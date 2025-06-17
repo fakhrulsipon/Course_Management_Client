@@ -3,7 +3,9 @@ import { AuthContext } from "../Provider/AuthProvider";
 import axios from "axios";
 import Swal from "sweetalert2";
 
+
 const AddCourse = () => {
+
 
     useEffect(() => {
         document.title = 'Add Course | EduPath';
@@ -16,6 +18,7 @@ const AddCourse = () => {
         const description = e.target.description.value;
         const image = e.target.image.value;
         const duration = e.target.duration.value;
+        const availableSeats = e.target.availableSeats.value;
         // console.log(title, description, image, duration)
 
         const newCourse = {
@@ -23,13 +26,14 @@ const AddCourse = () => {
             description,
             image,
             duration,
+            availableSeats,
             instructorEmail: user?.email,
             instructorName: user?.displayName,
             createdAt: new Date().toISOString()
 
         }
 
-        axios.post('http://localhost:3000/add-course', newCourse)
+        axios.post('https://edupath-server.vercel.app/add-course', newCourse)
             .then(res => {
                 if (res.data.insertedId) {
                     Swal.fire({
@@ -102,6 +106,17 @@ const AddCourse = () => {
                         className="w-full border border-gray-300 rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-green-500"
                         placeholder="Enter course duration"
                         required
+                    />
+                </div>
+
+                <div className="mb-4">
+                    <label className="block text-gray-700 font-medium mb-2">Available Seats</label>
+                    <input
+                        type="number"
+                        name="availableSeats"
+                        min="1"
+                        required
+                        className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
                     />
                 </div>
 
