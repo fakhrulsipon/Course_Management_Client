@@ -57,7 +57,7 @@ This project solidifies practical knowledge in **JWT Authentication**, **Firebas
 
 ```bash
 # 1️⃣ Clone the repository
-git clone https://github.com/fakhrulsipon/chatorbit.git
+git clone https://github.com/fakhrulsipon/edupath.git
 cd Course_Management_Client
 
 # 2️⃣ Install frontend dependencies
