@@ -53,49 +53,29 @@ This project solidifies practical knowledge in **JWT Authentication**, **Firebas
 - **Custom 404 Page**, Loading Spinners, and dynamic page titles
 
 ---
-## 🚀 How to Run EduPath Locally
+## 📦 How to Run Locally
 
-Follow these simple steps to get the EduPath project up and running on your machine:
+```bash
+# 1️⃣ Clone the repository
+git clone https://github.com/fakhrulsipon/chatorbit.git
+cd Course_Management_Client
 
-1. **Clone the Repository**  
-   ```bash
-   git clone https://github.com/your-username/edupath.git
-   cd edupath
-Install Dependencies
-
-bash
-Copy
-Edit
+# 2️⃣ Install frontend dependencies
 npm install
-Configure Environment Variables
 
-Create a .env file in the root folder.
+# 3️⃣ Add environment variables
+# ➜ Create a .env file with:
+# - VITE_FIREBASE_API_KEY
+# - VITE_FIREBASE_AUTH_DOMAIN
+# - VITE_MONGODB_URI
+# - VITE_STRIPE_PUBLIC_KEY
 
-Add your Firebase config, backend URLs, and other keys as needed.
-Example:
-
-ini
-Copy
-Edit
-REACT_APP_FIREBASE_API_KEY=your_firebase_api_key
-REACT_APP_FIREBASE_AUTH_DOMAIN=your_project_auth_domain
-REACT_APP_BACKEND_URL=http://localhost:5000
-Start the Backend Server (if backend is separate)
-
-bash
-Copy
-Edit
-cd backend
-npm install
+# 4️⃣ Start development server
 npm run dev
-Make sure your MongoDB server is running and accessible.
 
-Run the Frontend
+# 5️⃣ Run backend separately if using decoupled server
+cd Course_Management_Server
+npm install
+nodemon index.js
 
-bash
-Copy
-Edit
-npm start
-Open in Browser
-Visit 👉 http://localhost:3000 to explore EduPath live locally!
 
