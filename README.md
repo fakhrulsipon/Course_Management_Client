@@ -1,4 +1,4 @@
-# 📚 CourseMaster - A Complete Course Management System
+# 📚 EduPath - A Complete Course Management System
 
 ## 🌐 Live Website
 [🔗 Visit Live Site](https://subscription-box-2faea.web.app/)
@@ -53,6 +53,49 @@ This project solidifies practical knowledge in **JWT Authentication**, **Firebas
 - **Custom 404 Page**, Loading Spinners, and dynamic page titles
 
 ---
+## 🚀 How to Run EduPath Locally
 
-## 📂 Folder Structure
+Follow these simple steps to get the EduPath project up and running on your machine:
+
+1. **Clone the Repository**  
+   ```bash
+   git clone https://github.com/your-username/edupath.git
+   cd edupath
+Install Dependencies
+
+bash
+Copy
+Edit
+npm install
+Configure Environment Variables
+
+Create a .env file in the root folder.
+
+Add your Firebase config, backend URLs, and other keys as needed.
+Example:
+
+ini
+Copy
+Edit
+REACT_APP_FIREBASE_API_KEY=your_firebase_api_key
+REACT_APP_FIREBASE_AUTH_DOMAIN=your_project_auth_domain
+REACT_APP_BACKEND_URL=http://localhost:5000
+Start the Backend Server (if backend is separate)
+
+bash
+Copy
+Edit
+cd backend
+npm install
+npm run dev
+Make sure your MongoDB server is running and accessible.
+
+Run the Frontend
+
+bash
+Copy
+Edit
+npm start
+Open in Browser
+Visit 👉 http://localhost:3000 to explore EduPath live locally!
 
