@@ -24,6 +24,12 @@ const Navbar = () => {
         });
       })
   }
+
+  const NavLinkClass = ({ isActive }) => 
+  isActive 
+    ? "text-blue-400 border-b-2 border-blue-400 font-bold transition-all duration-200" 
+    : "hover:text-blue-400 transition-all duration-200";
+
   return (
     <div className="relative z-50 navbar bg-base-100/80 backdrop-blur-md shadow-md w-full rounded-xl mt-3  px-4 sm:px-6 md:px-10 lg:px-16 xl:px-20">
       <div className="navbar-start">
@@ -34,31 +40,31 @@ const Navbar = () => {
             </svg>
           </div>
           <ul tabIndex={0} className="menu menu-sm dropdown-content bg-base-100 rounded-box mt-3 w-52 p-2 shadow-xl font-semibold z-1">
-            <li><NavLink to="/" className={({ isActive }) => isActive ? "text-primary border-b-2 border-primary font-bold" : "hover:text-primary"}>Home</NavLink></li>
-            <li><NavLink to="/courses" className={({ isActive }) => isActive ? "text-primary border-b-2 border-primary font-bold" : "hover:text-primary"}>Courses</NavLink></li>
+            <li><NavLink to="/" className={NavLinkClass}>Home</NavLink></li>
+            <li><NavLink to="/courses" className={NavLinkClass}>Courses</NavLink></li>
             {user && <>
-              <li><NavLink to="/add-course" className={({ isActive }) => isActive ? "text-primary border-b-2 border-primary font-bold" : "hover:text-primary"}>Add Course</NavLink></li>
-              <li><NavLink to="/manage-course" className={({ isActive }) => isActive ? "text-primary border-b-2 border-primary font-bold" : "hover:text-primary"}>Manage Course</NavLink></li>
-              <li><NavLink to="/my-enrolled" className={({ isActive }) => isActive ? "text-primary border-b-2 border-primary font-bold" : "hover:text-primary"}>My Enrolled</NavLink></li>
+              <li><NavLink to="/add-course" className={NavLinkClass}>Add Course</NavLink></li>
+              <li><NavLink to="/manage-course" className={NavLinkClass}>Manage Course</NavLink></li>
+              <li><NavLink to="/my-enrolled" className={NavLinkClass}>My Enrolled</NavLink></li>
             </>}
-            <li><NavLink to="/about-us" className={({ isActive }) => isActive ? "text-primary border-b-2 border-primary font-bold" : "hover:text-primary"}>About Us</NavLink></li>
+            <li><NavLink to="/about-us" className={NavLinkClass}>About Us</NavLink></li>
           </ul>
         </div>
         <img className="h-12 w-12 rounded-full mr-2 border-2 border-primary" src="/website-logo.avif" alt="Logo" />
-        <span className="text-2xl font-extrabold text-primary tracking-wide hidden md:block">EduPath</span>
+        <span className="text-2xl font-extrabold text-blue-400 tracking-wide hidden md:block">EduPath</span>
       </div>
 
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1 font-medium gap-4">
-          <li><NavLink to="/" className={({ isActive }) => isActive ? "text-primary border-b-2 border-primary font-bold" : "hover:text-primary transition-all duration-200"}>Home</NavLink></li>
-          <li><NavLink to="/courses" className={({ isActive }) => isActive ? "text-primary border-b-2 border-primary font-bold" : "hover:text-primary transition-all duration-200"}>Courses</NavLink></li>
+          <li><NavLink to="/" className={NavLinkClass}>Home</NavLink></li>
+          <li><NavLink to="/courses" className={NavLinkClass}>Courses</NavLink></li>
           {user && <>
-            <li><NavLink to="/add-course" className={({ isActive }) => isActive ? "text-primary border-b-2 border-primary font-bold" : "hover:text-primary transition-all duration-200"}>Add Course</NavLink></li>
-            <li><NavLink to="/manage-course" className={({ isActive }) => isActive ? "text-primary border-b-2 border-primary font-bold" : "hover:text-primary transition-all duration-200"}>Manage Course</NavLink></li>
-            <li><NavLink to="/my-enrolled" className={({ isActive }) => isActive ? "text-primary border-b-2 border-primary font-bold" : "hover:text-primary transition-all duration-200"}>My Enrolled</NavLink></li>
+            <li><NavLink to="/add-course" className={NavLinkClass}>Add Course</NavLink></li>
+            <li><NavLink to="/manage-course" className={NavLinkClass}>Manage Course</NavLink></li>
+            <li><NavLink to="/my-enrolled" className={NavLinkClass}>My Enrolled</NavLink></li>
 
           </>}
-          <li><NavLink to="/about-us" className={({ isActive }) => isActive ? "text-primary border-b-2 border-primary font-bold" : "hover:text-primary transition-all duration-200"}>About Us</NavLink></li>
+          <li><NavLink to="/about-us" className={NavLinkClass}>About Us</NavLink></li>
         </ul>
       </div>
 
@@ -77,8 +83,8 @@ const Navbar = () => {
             </div>
           ) : (
             <>
-              <Link className="btn btn-outline btn-primary mr-2 transition duration-300 hover:scale-105" to="/login">Login</Link>
-              <Link className="btn bg-gradient-to-r from-primary to-secondary text-white hover:brightness-110 transition duration-300" to="/register">Register</Link>
+              <Link className="btn btn-outline hover:bg-blue-400 hover:text-white mr-2 transition duration-300 hover:scale-105" to="/login">Login</Link>
+              <Link className="btn bg-gradient-to-r from-blue-400 to-secondary text-white hover:brightness-110 transition duration-300" to="/register">Register</Link>
             </>
           )
         }

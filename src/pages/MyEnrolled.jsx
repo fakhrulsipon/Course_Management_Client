@@ -15,10 +15,10 @@ const MyEnrolled = () => {
 
     useEffect(() => {
         if (user?.email) {
-            axios.get(`https://edupath-server.vercel.app/enrolled-courses?email=${user.email}`, {
-              headers: {
-                Authorization: `Bearer ${user.accessToken}`
-              }  
+            axios.get(`http://localhost:3000/enrolled-courses?email=${user.email}`, {
+                headers: {
+                    Authorization: `Bearer ${user.accessToken}`
+                }
             })
                 .then(res => {
                     setMyEnrolled(res.data)
@@ -35,13 +35,13 @@ const MyEnrolled = () => {
         }
     }, [user])
 
-    if(loading){
-    return (
-      <div className="flex justify-center items-center h-64">
-        <span className="loading loading-bars loading-xl text-green-600"></span>
-      </div>
-    );
-  }
+    if (loading) {
+        return (
+            <div className="flex justify-center items-center h-64">
+                <div className="h-10 w-10 animate-[spin_2s_linear_infinite] rounded-full border-4 border-dashed border-sky-600"></div>;
+            </div>
+        );
+    }
 
     const handleRemove = (id) => {
         Swal.fire({
@@ -54,7 +54,7 @@ const MyEnrolled = () => {
             confirmButtonText: "Yes, delete it!"
         }).then((result) => {
             if (result.isConfirmed) {
-                axios.delete(`https://edupath-server.vercel.app/delete-enrolled/${id}/${user.email}`)
+                axios.delete(`http://localhost:3000/delete-enrolled/${id}/${user.email}`)
                     .then(res => {
                         if (res.data.deletedCount) {
                             Swal.fire({
@@ -78,30 +78,32 @@ const MyEnrolled = () => {
         });
     }
     return (
-        <div className="overflow-x-auto my-10 w-11/12 mx-auto">
-            <h2 className="text-2xl font-bold mb-6 text-center text-gray-800">Your Enrolled Courses</h2>
-            <table className="min-w-full bg-white border border-gray-300 rounded-lg overflow-hidden shadow-md">
-                <thead className="bg-gradient-to-r from-green-100 to-green-200 text-gray-700">
-                    <tr>
-                        <th className="text-left px-4 py-3 font-semibold">Title</th>
-                        <th className="text-left px-4 py-3 font-semibold">Description</th>
-                        <th className="text-left px-4 py-3 font-semibold">Action</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {myEnrolled.map(course => (
-                        <tr key={course._id} className="border-t hover:bg-gray-50 transition duration-200">
-                            <td className="px-4 py-3 text-sm text-gray-800">{course.title}</td>
-                            <td className="px-4 py-3 text-sm text-gray-700">{course.description}</td>
-                            <td className="px-4 py-3">
-                                <button onClick={() => handleRemove(course._id)} className="bg-red-500 text-white px-4 py-1 rounded hover:bg-red-600 transition">
-                                    Remove Enrollment
-                                </button>
-                            </td>
+        <div className='pt-16'>
+            <div className="overflow-x-auto w-11/12 mx-auto">
+                <h2 className="text-2xl font-bold mb-6 text-center text-gray-800">Your Enrolled Courses</h2>
+                <table className="min-w-full bg-white border border-gray-300 rounded-lg overflow-hidden shadow-md">
+                    <thead className="bg-gradient-to-r from-green-100 to-green-200 text-gray-700">
+                        <tr>
+                            <th className="text-left px-4 py-3 font-semibold">Title</th>
+                            <th className="text-left px-4 py-3 font-semibold">Description</th>
+                            <th className="text-left px-4 py-3 font-semibold">Action</th>
                         </tr>
-                    ))}
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody>
+                        {myEnrolled.map(course => (
+                            <tr key={course._id} className="border-t hover:bg-gray-50 transition duration-200">
+                                <td className="px-4 py-3 text-sm text-gray-800">{course.title}</td>
+                                <td className="px-4 py-3 text-sm text-gray-700">{course.description}</td>
+                                <td className="px-4 py-3">
+                                    <button onClick={() => handleRemove(course._id)} className="bg-red-500 text-white px-4 py-1 rounded hover:bg-red-600 transition">
+                                        Remove Enrollment
+                                    </button>
+                                </td>
+                            </tr>
+                        ))}
+                    </tbody>
+                </table>
+            </div>
         </div>
     );
 };

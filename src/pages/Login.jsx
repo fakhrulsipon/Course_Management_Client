@@ -90,9 +90,9 @@ const Login = () => {
 
     return (
 
-      <div className="flex items-center justify-center min-h-screen bg-gradient-to-tr from-green-50 via-white to-green-100 px-4 pt-10">
-  <div className="w-full max-w-md bg-white border border-green-300 rounded-2xl shadow-xl p-8 transition duration-300 hover:scale-[1.01]">
-    <h2 className="text-3xl font-extrabold text-center text-green-700 mb-6">Login Now</h2>
+      <div className="flex items-center justify-center min-h-screen px-4">
+  <div className="w-full max-w-md bg-white border border-blue-300 rounded-2xl p-8 transition duration-300">
+    <h2 className="text-3xl font-extrabold text-center text-blue-500 mb-6">Login Now</h2>
 
     <form onSubmit={handleLogin} className="space-y-5">
       <div>
@@ -100,7 +100,7 @@ const Login = () => {
         <input
           type="email"
           name="email"
-          className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500"
+          className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
           placeholder="Enter your email"
           required
         />
@@ -111,20 +111,20 @@ const Login = () => {
         <input
           type={show ? "text" : "password"}
           name="password"
-          className="w-full px-4 py-2 pr-10 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500"
+          className="w-full px-4 py-2 pr-10 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
           placeholder="Enter your password"
           required
         />
         <button
           type="button"
           onClick={() => setShow(!show)}
-          className="absolute right-3 top-9 text-gray-500 hover:text-green-600"
+          className="absolute right-3 top-9 text-gray-500 hover:text-blue-500"
         >
           {show ? <FaEyeSlash size={18} /> : <FaEye size={18} />}
         </button>
       </div>
 
-      <button className="w-full py-2 px-4 bg-green-600 text-white font-semibold rounded-lg hover:bg-green-700 transition duration-300">
+      <button className="w-full py-2 px-4 bg-blue-400 text-white font-semibold rounded-lg hover:bg-blue-500 transition duration-300">
         Login
       </button>
     </form>
@@ -157,7 +157,7 @@ const Login = () => {
 
     <p className="mt-6 text-center text-sm text-gray-600">
       Don't have an account?
-      <a href="/register" className="ml-1 text-green-600 font-semibold hover:underline">
+      <a href="/register" className="ml-1 text-blue-400 font-semibold hover:underline">
         Register here
       </a>
     </p>

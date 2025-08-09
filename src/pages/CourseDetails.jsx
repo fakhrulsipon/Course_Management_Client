@@ -17,7 +17,7 @@ const CourseDetails = () => {
 
     useEffect(() => {
         if (user?.email) {
-            axios.get(`https://edupath-server.vercel.app/check-enroll?email=${user.email}&courseId=${course._id}`)
+            axios.get(`http://localhost:3000/check-enroll?email=${user.email}&courseId=${course._id}`)
                 .then(res => {
                     setEnrolled(res.data.enrolled);
                 })
@@ -33,7 +33,7 @@ const CourseDetails = () => {
         setLoading(true);
 
         try {
-            const { data } = await axios.post('https://edupath-server.vercel.app/enroll', {
+            const { data } = await axios.post('http://localhost:3000/enroll', {
                 email: user.email,
                 courseId: course._id
             });

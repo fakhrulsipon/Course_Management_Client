@@ -3,6 +3,7 @@ import { AuthContext } from "../Provider/AuthProvider";
 import axios from "axios";
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router";
+import { FiBookOpen, FiFileText, FiImage, FiClock, FiUsers } from "react-icons/fi";
 
 
 const AddCourse = () => {
@@ -35,7 +36,7 @@ const AddCourse = () => {
 
         }
 
-        axios.post('https://edupath-server.vercel.app/add-course', newCourse)
+        axios.post('http://localhost:3000/add-course', newCourse)
             .then(res => {
                 if (res.data.insertedId) {
                     Swal.fire({
@@ -60,80 +61,123 @@ const AddCourse = () => {
     }
 
     return (
-        <div className="max-w-2xl mx-auto p-6 bg-white shadow-lg rounded-lg mt-10 border-2 border-emerald-400">
-            <h2 className="text-2xl font-bold mb-6 text-center">Add New Course</h2>
 
-            <form onSubmit={handleAddCourse} className="space-y-4">
-                {/* Course Title */}
-                <div>
-                    <label className="block font-medium mb-1">Course Title</label>
-                    <input
-                        type="text"
-                        name="title"
-                        className="w-full border border-gray-300 rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-green-500"
-                        placeholder="Enter course title"
-                        required
-                    />
-                </div>
+<div className="min-h-screen flex justify-center items-center px-4 sm:px-8 lg:px-16 xl:px-24">
+  <div className="flex flex-col lg:flex-row items-center gap-10 max-w-6xl w-full">
+    
+    {/* Form Section */}
+    <section className="max-w-lg w-full md:pt-8">
+      <h2 className="text-2xl font-bold mb-6 text-center text-blue-900">Add New Course</h2>
 
-                {/* Short Description */}
-                <div>
-                    <label className="block font-medium mb-1">Short Description</label>
-                    <textarea
-                        name="description"
-                        rows="4"
-                        className="w-full border border-gray-300 rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-green-500"
-                        placeholder="Enter short description"
-                        required
-                    ></textarea>
-                </div>
-
-                {/* Image URL */}
-                <div>
-                    <label className="block font-medium mb-1">Image URL</label>
-                    <input
-                        type="text"
-                        name="image"
-                        className="w-full border border-gray-300 rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-green-500"
-                        placeholder="Enter image URL"
-                        required
-                    />
-                </div>
-
-                {/* Duration */}
-                <div>
-                    <label className="block font-medium mb-1">Duration (e.g., 4 Month)</label>
-                    <input
-                        type="text"
-                        name="duration"
-                        className="w-full border border-gray-300 rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-green-500"
-                        placeholder="Enter course duration"
-                        required
-                    />
-                </div>
-
-                <div className="mb-4">
-                    <label className="block text-gray-700 font-medium mb-2">Available Seats</label>
-                    <input
-                        type="number"
-                        name="availableSeats"
-                        min="1"
-                        required
-                        className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
-                    />
-                </div>
-
-                {/* Submit button (optional) */}
-                <div className="text-center pt-4">
-                    <button
-                        type="submit"
-                        className="bg-green-600 hover:bg-green-700 text-white px-6 py-2 rounded shadow"
-                    >
-                        Add Course
-                    </button>
-                </div>
-            </form>
+      <form onSubmit={handleAddCourse} className="space-y-5">
+        {/* Course Title */}
+        <div>
+          <label className="block text-md font-semibold mb-1 flex items-center gap-2 text-blue-900">
+            <FiBookOpen className="text-xl" /> Course Title
+          </label>
+          <input
+            type="text"
+            name="title"
+            className="w-full border border-blue-400 rounded-md px-4 py-2 shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-600 transition bg-transparent placeholder:text-blue-700 text-blue-900 text-sm"
+            placeholder="Enter course title"
+            required
+          />
         </div>
+
+        {/* Short Description */}
+        <div>
+          <label className="block text-md font-semibold mb-1 flex items-center gap-2 text-blue-900">
+            <FiFileText className="text-xl" /> Short Description
+          </label>
+          <textarea
+            name="description"
+            rows="3"
+            className="w-full border border-blue-400 rounded-md px-4 py-2 shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-600 transition resize-none bg-transparent placeholder:text-blue-700 text-blue-900 text-sm"
+            placeholder="Enter short description"
+            required
+          ></textarea>
+        </div>
+
+        {/* Image URL */}
+        <div>
+          <label className="block text-md font-semibold mb-1 flex items-center gap-2 text-blue-900">
+            <FiImage className="text-xl" /> Image URL
+          </label>
+          <input
+            type="text"
+            name="image"
+            className="w-full border border-blue-400 rounded-md px-4 py-2 shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-600 transition bg-transparent placeholder:text-blue-700 text-blue-900 text-sm"
+            placeholder="Enter image URL"
+            required
+          />
+        </div>
+
+        {/* Duration */}
+        <div>
+          <label className="block text-md font-semibold mb-1 flex items-center gap-2 text-blue-900">
+            <FiClock className="text-xl" /> Duration (e.g., 4 Month)
+          </label>
+          <input
+            type="text"
+            name="duration"
+            className="w-full border border-blue-400 rounded-md px-4 py-2 shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-600 transition bg-transparent placeholder:text-blue-700 text-blue-900 text-sm"
+            placeholder="Enter course duration"
+            required
+          />
+        </div>
+
+        {/* Available Seats */}
+        <div>
+          <label className="block text-md font-semibold mb-1 flex items-center gap-2 text-blue-900">
+            <FiUsers className="text-xl" /> Available Seats
+          </label>
+          <input
+            type="number"
+            name="availableSeats"
+            min="1"
+            required
+            className="w-full border border-blue-400 rounded-md px-4 py-2 shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-600 transition bg-transparent placeholder:text-blue-700 text-blue-900 text-sm"
+          />
+        </div>
+
+        {/* Submit button */}
+        <div className="text-center pt-4">
+          <button
+            type="submit"
+            className="bg-gradient-to-r from-blue-700 to-blue-900 hover:from-blue-800 hover:to-blue-950 text-white px-6 py-2 rounded-md shadow-md font-semibold transition-transform duration-300 hover:scale-105"
+          >
+            Add Course
+          </button>
+        </div>
+      </form>
+    </section>
+
+    {/* Static Text Section */}
+    <aside className="hidden lg:block lg:w-1/3 max-w-sm bg-blue-50 bg-opacity-50 rounded-lg p-6 shadow-md text-blue-900">
+      <h3 className="text-xl font-semibold mb-4">Why Add Courses?</h3>
+      <p className="mb-3 leading-relaxed">
+        Adding new courses helps learners enhance their skills and knowledge. 
+        Make sure to provide accurate and detailed information so that students get the best experience.
+      </p>
+      <p className="mb-3 leading-relaxed">
+        Our Course Management System supports:
+        <ul className="list-disc ml-5 mt-2 space-y-1">
+          <li>Easy course creation</li>
+          <li>Managing course duration and seats</li>
+          <li>Tracking enrolled students</li>
+          <li>Organized learning paths</li>
+        </ul>
+      </p>
+      <p className="font-semibold mt-4">
+        Let's build a strong learning community together!
+      </p>
+    </aside>
+  </div>
+</div>
+
+
+
+
     );
 };
 

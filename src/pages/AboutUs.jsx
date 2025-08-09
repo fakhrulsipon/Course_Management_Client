@@ -7,7 +7,7 @@ const AboutUs = () => {
 }, []);
     return (
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-            <h1 className="text-3xl sm:text-4xl font-bold text-center text-blue-600 mb-6">About Us</h1>
+            <h1 className="text-3xl font-semibold text-center text-gray-800 mb-2">About Us</h1>
 
             <p className="text-gray-700 text-base sm:text-lg text-center leading-relaxed mb-10 max-w-3xl mx-auto px-2">
                 Welcome to <span className="font-semibold text-blue-500">EduPath</span> — your trusted course management platform!

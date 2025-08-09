@@ -18,7 +18,7 @@ const ManageCourses = () => {
     useEffect(() => {
         setLoading(true)
         if (user?.email ) {
-            axios.get(`https://edupath-server.vercel.app/my-courses?email=${user.email}`, {
+            axios.get(`http://localhost:3000/my-courses?email=${user.email}`, {
                  headers: {
                 Authorization: `Bearer ${user.accessToken}`
               }  
@@ -41,7 +41,7 @@ const ManageCourses = () => {
      if(loading){
     return (
       <div className="flex justify-center items-center h-64">
-        <span className="loading loading-bars loading-xl text-green-600"></span>
+        <div className="h-10 w-10 animate-[spin_2s_linear_infinite] rounded-full border-4 border-dashed border-sky-600"></div>;
       </div>
     );
   }
@@ -58,7 +58,7 @@ const ManageCourses = () => {
         }).then((result) => {
             if (result.isConfirmed) {
 
-                axios.delete(`https://edupath-server.vercel.app/delete-course/${id}`)
+                axios.delete(`http://localhost:3000/delete-course/${id}`)
                     .then(res => {
                         if (res.data.deletedCount) {
                             Swal.fire({
@@ -82,10 +82,11 @@ const ManageCourses = () => {
 
     }
     return (
-        <div className="overflow-x-auto my-10 px-4 lg:w-11/12 mx-auto">
+        <div className='pt-10'>
+            <div className="overflow-x-auto px-4 lg:w-11/12 mx-auto">
             <h2 className="text-2xl font-bold mb-6 text-center text-gray-800">Your Added Courses</h2>
             <table className="min-w-full bg-white border border-gray-300 rounded-lg overflow-hidden shadow-md">
-                <thead className="bg-gradient-to-r from-blue-100 to-blue-200 text-gray-700">
+                <thead className="bg-gradient-to-r from-blue-400 to-blue-200 text-gray-700">
                     <tr>
                         <th className="text-left px-4 py-3 font-semibold">Title</th>
                         <th className="text-left px-4 py-3 font-semibold">Short Description</th>
@@ -111,6 +112,7 @@ const ManageCourses = () => {
                     ))}
                 </tbody>
             </table>
+        </div>
         </div>
     );
 };

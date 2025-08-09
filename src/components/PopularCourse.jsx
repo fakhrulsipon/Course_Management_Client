@@ -8,7 +8,7 @@ function PopularCourses() {
 
   useEffect(() => {
     setLoading(true)
-    axios.get("https://edupath-server.vercel.app/popular-courses")
+    axios.get("http://localhost:3000/popular-courses")
       .then(response => {
         setCourses(response.data)
         setLoading(false)
@@ -22,14 +22,14 @@ function PopularCourses() {
   if(loading){
     return (
       <div className="flex justify-center items-center h-64">
-        <span className="loading loading-bars loading-xl text-green-600"></span>
+     <div className="h-10 w-10 animate-[spin_2s_linear_infinite] rounded-full border-4 border-dashed border-sky-600"></div>;
       </div>
     );
   }
 
   return (
-   <div className="w-11/12 mx-auto my-14 px-4">
-  <h2 className="text-4xl font-bold text-center text-primary mb-2">Popular Courses</h2>
+   <div className="w-11/12 mx-auto mt-8 md:mt-12 lg:mt-16 px-4">
+  <h2 className="text-3xl font-semibold text-center text-gray-800 mb-2">Popular Courses</h2>
   <p className="text-center text-gray-500 mb-10 max-w-xl mx-auto">
     Discover the most enrolled courses chosen by thousands of learners to upgrade their skills fast.
   </p>
@@ -46,7 +46,7 @@ function PopularCourses() {
           className="w-full h-48 object-cover rounded-t-2xl group-hover:scale-105 transition-transform duration-300"
         />
         <div className="p-6">
-          <h3 className="text-2xl font-semibold text-primary mb-2">{course.title}</h3>
+          <h3 className="text-2xl font-semibold text-blue-300 mb-2">{course.title}</h3>
           <p className="text-sm text-green-600 font-bold mb-1">
             🔥 Enrollments: {course.enrollCount}
           </p>
