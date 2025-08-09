@@ -55,13 +55,13 @@ const Courses = () => {
               className="w-full h-48 object-cover"
             />
 
-            <div className="p-5 space-y-3">
-              <h2 className="text-2xl font-bold text-gray-800">{course.title}</h2>
+            <div className="p-5 space-y-2">
+              <h2 className="text-xl font-bold text-blue-400">{course.title}</h2>
               <p className="text-gray-600 text-sm">
                 {course.description?.slice(0, 50)}...
               </p>
-
-              <div className="flex items-center justify-between mt-4 border-t border-gray-100 pt-3">
+              <p className='font-medium'>Price: {course.price}</p>
+              <div className="flex items-center justify-between border-t border-gray-100">
                 {/* Instructor */}
                 <span className="flex items-center gap-2 text-sm font-medium text-gray-700">
                   <FaUserTie className="text-blue-500 text-lg" />

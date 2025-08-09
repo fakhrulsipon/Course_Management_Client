@@ -50,7 +50,7 @@ const LatestCourse = () => {
                 className="w-full h-48 object-cover rounded-xl group-hover:scale-105 transition-transform duration-300"
               />
             </div>
-            <h3 className="text-2xl font-semibold mt-4 text-blue-300">{course.title}</h3>
+            <h3 className="text-xl font-semibold mt-4 text-blue-300">{course.title}</h3>
             <p className="text-sm text-gray-500">{new Date(course.createdAt).toLocaleDateString()}</p>
             <p className="text-gray-700 mt-2">{course.description?.slice(0, 50)}...</p>
             <Link to={`/course-details/${course._id}`}>

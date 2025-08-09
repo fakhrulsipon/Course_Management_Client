@@ -2,6 +2,10 @@ import React, { use, useEffect, useState } from 'react';
 import { AuthContext } from '../Provider/AuthProvider';
 import Swal from 'sweetalert2';
 import { useNavigate } from 'react-router';
+import Lottie from 'lottie-react';
+import registerLottie from '../assets/registerLottie.json'
+import axios from 'axios';
+import SocialLogin from '../components/SocialLogin';
 
 
 const Register = () => {
@@ -12,11 +16,12 @@ const Register = () => {
 
     const navigate = useNavigate()
     const { registerUser, setUser, updateUserProfile } = use(AuthContext)
+    const [profileImage, setProfileImage] = useState('');
     const [error, setError] = useState('');
     const handleRegister = (e) => {
         e.preventDefault()
         const name = e.target.name.value;
-        const photo = e.target.photo.value;
+        const photo = profileImage;
         const email = e.target.email.value;
         const password = e.target.password.value;
         const confirmPassword = e.target.confirmPassword.value;
@@ -75,11 +80,24 @@ const Register = () => {
                 });
             })
     }
+
+    const handleImage = async (e) => {
+        const image = e.target.files[0];
+
+        const formData = new FormData();
+        formData.append('image', image)
+
+        const imgUrl = `https://api.imgbb.com/1/upload?key=${import.meta.env.VITE_image_upload_key}`
+        const res = await axios.post(imgUrl, formData)
+        setProfileImage(res.data.data.url)
+
+    }
+
     return (
 
-        <div className="pt-10 flex items-center justify-center min-h-screen bg-gradient-to-tr from-green-50 via-white to-green-100 px-4">
-  <div className="w-full max-w-md bg-white rounded-2xl shadow-lg p-8 transition-transform duration-300 hover:scale-[1.01]">
-    <h1 className="text-4xl font-bold text-center text-green-600 mb-6">Register Now</h1>
+        <div className="flex lg:flex-row flex-col-reverse items-center justify-center min-h-screen px-4 pt-8 gap-12">
+  <div className="w-full max-w-md bg-white rounded-2xl p-8 transition-transform duration-300">
+    <h1 className="text-4xl font-bold text-center text-blue-400 mb-6">Register Now</h1>
 
     <form onSubmit={handleRegister} className="space-y-4">
 
@@ -88,7 +106,7 @@ const Register = () => {
         <input
           type="text"
           name="name"
-          className="mt-1 w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500"
+          className="mt-1 w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
           placeholder="Enter your name"
           required
         />
@@ -97,9 +115,9 @@ const Register = () => {
       <div>
         <label className="block text-sm font-semibold text-gray-700">Photo URL</label>
         <input
-          type="text"
-          name="photo"
-          className="mt-1 w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500"
+          type="file"
+          onChange={handleImage}
+          className="mt-1 w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
           placeholder="Enter your photo URL"
           required
         />
@@ -110,7 +128,7 @@ const Register = () => {
         <input
           type="email"
           name="email"
-          className="mt-1 w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500"
+          className="mt-1 w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
           placeholder="Enter your email"
           required
         />
@@ -121,7 +139,7 @@ const Register = () => {
         <input
           type="password"
           name="password"
-          className="mt-1 w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500"
+          className="mt-1 w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
           placeholder="Enter password"
           required
         />
@@ -132,7 +150,7 @@ const Register = () => {
         <input
           type="password"
           name="confirmPassword"
-          className="mt-1 w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500"
+          className="mt-1 w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
           placeholder="Confirm password"
           required
         />
@@ -142,19 +160,27 @@ const Register = () => {
 
       <button
         type="submit"
-        className="w-full py-2 px-4 bg-green-600 hover:bg-green-700 text-white font-semibold rounded-lg shadow-md transition duration-300"
+        className="w-full py-2 px-4 bg-blue-400 hover:bg-blue-600 text-white font-semibold rounded-lg shadow-md transition duration-300"
       >
         Register
       </button>
     </form>
 
+<SocialLogin></SocialLogin>
+
     <p className="mt-6 text-center text-sm text-gray-600">
       Already have an account?
-      <a href="/login" className="ml-1 text-green-600 font-semibold hover:underline">
+      <a href="/login" className="ml-1 text-blue-600 font-semibold hover:underline">
         Login here
       </a>
     </p>
   </div>
+
+  {/* ✅ Right: Responsive Lottie Animation */}
+      <div className="w-full max-w-md">
+        <Lottie animationData={registerLottie} loop={true} style={{ width: '100%', height: '100%' }} />
+      </div>
+
 </div>
     );
 };

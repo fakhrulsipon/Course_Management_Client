@@ -103,6 +103,8 @@ const CourseDetails = () => {
         )}
       </p>
 
+      <p className='font-medium text-xl'>Price: {course.price}</p>
+
       {/* Enroll/Unenroll Button */}
       <div className="mt-6">
         {seats > 0 || enrolled ? (

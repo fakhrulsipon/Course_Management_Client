@@ -48,7 +48,7 @@ const Footer = () => {
               <button className="hover:underline" onClick={() => document.getElementById('modal_faq').showModal()}>FAQs</button>
               <dialog id="modal_faq" className="modal">
                 <form method="dialog" className="modal-box max-w-lg">
-                  <h3 className="font-bold text-2xl mb-4 text-indigo-600">Frequently Asked Questions</h3>
+                  <h3 className="font-bold text-2xl mb-4 text-blue-600">Frequently Asked Questions</h3>
                   <p className="text-gray-700 leading-relaxed space-y-4">
                     <strong>Q1: How do I access my courses?</strong><br />
                     After registering, simply log in to your dashboard where all your courses will be available anytime, anywhere.<br />
@@ -60,7 +60,7 @@ const Footer = () => {
                     Absolutely! We offer a hassle-free refund policy. Please check the Refund Policy page for full details.<br />
                   </p>
                   <div className="modal-action mt-6">
-                    <button className="btn btn-primary hover:bg-indigo-700">Close</button>
+                    <button className="btn bg-blue-400 text-white hover:bg-blue-500">Close</button>
                   </div>
                 </form>
               </dialog></li>
@@ -69,7 +69,7 @@ const Footer = () => {
               <button className="hover:underline" onClick={() => document.getElementById('modal_contact').showModal()}>Contact Us</button>
               <dialog id="modal_contact" className="modal">
                 <form method="dialog" className="modal-box max-w-lg">
-                  <h3 className="font-bold text-2xl mb-4 text-green-600">Get in Touch</h3>
+                  <h3 className="font-bold text-2xl mb-4 text-blue-600">Get in Touch</h3>
                   <p className="text-gray-700 leading-relaxed space-y-4">
                     We’re here to help! Reach out to us through:<br />
                     <strong>Email:</strong> <a href="mailto:support@coursehub.com" className="text-blue-600 underline">support@coursehub.com</a><br />
@@ -77,7 +77,7 @@ const Footer = () => {
                     <strong>Office Hours:</strong> Monday - Friday, 9 AM to 6 PM<br />
                   </p>
                   <div className="modal-action mt-6">
-                    <button className="btn btn-success hover:bg-green-700">Close</button>
+                    <button className="btn hover:text-white hover:bg-blue-500">Close</button>
                   </div>
                 </form>
               </dialog></li>
@@ -86,13 +86,13 @@ const Footer = () => {
               <button className="hover:underline" onClick={() => document.getElementById('modal_privacy').showModal()}>Privacy Policy</button>
               <dialog id="modal_privacy" className="modal">
                 <form method="dialog" className="modal-box max-w-lg">
-                  <h3 className="font-bold text-2xl mb-4 text-purple-600">Privacy Policy</h3>
+                  <h3 className="font-bold text-2xl mb-4 text-blue-600">Privacy Policy</h3>
                   <p className="text-gray-700 leading-relaxed space-y-4">
                     Your privacy matters to us. We ensure your personal data is protected with the highest security standards. We never share your information with third parties without consent.<br />
                     For full details, please visit our detailed Privacy Policy page on the website.
                   </p>
                   <div className="modal-action mt-6">
-                    <button className="btn btn-purple hover:bg-purple-700">Close</button>
+                    <button className="btn hover:text-white hover:bg-blue-700">Close</button>
                   </div>
                 </form>
               </dialog></li>
