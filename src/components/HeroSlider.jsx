@@ -11,20 +11,21 @@ const slides = [
     image: "https://i.ibb.co/8Ddkk8xG/657c2a4ca54cee8b9672049b-pexels-antoni-shkraba-4348401-1.jpg"
   },
   {
-    title: "Learn From Experts",
-    subtitle: "Get guidance from experienced instructors",
-    image: "https://i.ibb.co/r2RMN22L/colleagues-working-project-discussing-details-114579-2817.jpg"
+    title: "Unlock Your Potential",
+    subtitle: "Learn with expert guidance and real-world projects",
+    image: "https://i.ibb.co.com/xNCWLb4/slider-img2.jpg"
   },
   {
-    title: "Enroll & Grow",
-    subtitle: "One click to enroll, a lifetime to benefit",
-    image: "https://i.ibb.co/pj3nvvrr/550288-28d3b31889f84de8a7039fedb67c6ec0-mv2.jpg"
+    title: "Learn Anytime, Anywhere",
+    subtitle: "Access high-quality lessons from any device, any time",
+    image: "https://i.ibb.co.com/YByDrcsk/slider-img3.jpg"
   },
   {
-    title: "Track Your Progress",
-    subtitle: "Stay organized and focused on your learning journey",
-    image: "https://i.ibb.co/KjNDKd9F/stock-photo-track-your-progress-advice-white-chalk-text-on-a-vintage-slate-blackboard-306632363.jpg"
+    title: "Track & Achieve Your Goals",
+    subtitle: "Stay motivated and monitor your learning progress",
+    image: "https://i.ibb.co.com/67KhksG7/Untitled-design.png"
   },
+
   {
     title: "Flexible Learning",
     subtitle: "Access your courses anytime, anywhere",

@@ -18,7 +18,7 @@ const EditCourse = () => {
         const form = e.target;
         const formData = new FormData(form)
         const editCourse = Object.fromEntries(formData.entries())
-        console.log(editCourse)
+        // console.log(editCourse)
 
         axios.put(`https://edupath-server.vercel.app/update-course/${course._id}`, editCourse)
             .then(res => {
