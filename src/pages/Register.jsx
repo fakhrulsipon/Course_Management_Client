@@ -77,7 +77,7 @@ const Register = () => {
     }
     return (
 
-        <div className="mt-10 flex items-center justify-center min-h-screen bg-gradient-to-tr from-green-50 via-white to-green-100 px-4">
+        <div className="pt-10 flex items-center justify-center min-h-screen bg-gradient-to-tr from-green-50 via-white to-green-100 px-4">
   <div className="w-full max-w-md bg-white rounded-2xl shadow-lg p-8 transition-transform duration-300 hover:scale-[1.01]">
     <h1 className="text-4xl font-bold text-center text-green-600 mb-6">Register Now</h1>
 

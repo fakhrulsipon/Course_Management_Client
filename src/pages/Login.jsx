@@ -90,7 +90,7 @@ const Login = () => {
 
     return (
 
-      <div className="flex items-center justify-center min-h-screen bg-gradient-to-br from-green-50 to-green-100 px-4 mt-10">
+      <div className="flex items-center justify-center min-h-screen bg-gradient-to-tr from-green-50 via-white to-green-100 px-4 pt-10">
   <div className="w-full max-w-md bg-white border border-green-300 rounded-2xl shadow-xl p-8 transition duration-300 hover:scale-[1.01]">
     <h2 className="text-3xl font-extrabold text-center text-green-700 mb-6">Login Now</h2>
 
