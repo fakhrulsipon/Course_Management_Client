@@ -80,35 +80,35 @@ const CourseDetails = () => {
         {/* Content Section */}
         <div>
           {/* Title */}
-          <h2 className="text-4xl font-extrabold text-gray-800 mb-4">
+          <h2 className="text-4xl font-extrabold text-gray-800 mb-4 dark:text-gray-200">
             {course.title}
           </h2>
 
           {/* Duration & Posted Date */}
-          <p className="text-gray-700 mb-2">
-            <span className="font-semibold">Duration:</span> {course.duration}
+          <p className="text-gray-700 mb-2 dark:text-gray-200">
+            <span className="font-semibold dark:text-gray-200">Duration:</span> {course.duration}
           </p>
-          <p className="text-gray-500 mb-4">
+          <p className="text-gray-500 mb-4 dark:text-gray-200">
             <span className="font-semibold">Posted on:</span>{" "}
             {new Date(course.createdAt).toLocaleDateString()}
           </p>
 
           {/* Description */}
-          <p className="text-gray-700 leading-relaxed mb-6">
+          <p className="text-gray-700 leading-relaxed mb-6 dark:text-gray-200">
             {course.description}
           </p>
 
           {/* Seats Info */}
-          <p className="text-lg font-medium">
+          <p className="text-lg font-medium dark:text-gray-200">
             Seats Left:{" "}
             {seats > 0 ? (
               seats
             ) : (
-              <span className="text-red-500">No seats left</span>
+              <span className="text-red-500 dark:text-gray-200">No seats left</span>
             )}
           </p>
 
-          <p className='font-medium text-xl'>Price: {course.price}</p>
+          <p className='font-medium text-xl dark:text-gray-200'>Price: {course.price}</p>
 
           {/* Enroll/Unenroll Button */}
           <div className="mt-6">
@@ -124,7 +124,7 @@ const CourseDetails = () => {
                 {enrolled ? "Unenroll" : "Enroll"}
               </button>
             ) : (
-              <span className="text-red-500 font-semibold">No seats left</span>
+              <span className="text-red-500 font-semibold dark:text-gray-200">No seats left</span>
             )}
           </div>
 

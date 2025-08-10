@@ -1,4 +1,3 @@
-import React from 'react';
 import Navbar from '../components/Navbar';
 import { Outlet } from 'react-router';
 import Footer from '../components/Footer';
@@ -10,7 +9,7 @@ const HomeLayout = () => {
             <nav className="sticky top-0 z-50 bg-white shadow-md">
               <Navbar></Navbar>  
             </nav>
-            <div className='pb-16'>
+            <div className='bg-blue-100 pb-16 dark:bg-gray-900'>
                 <Outlet></Outlet>
             </div>
             <Footer></Footer>

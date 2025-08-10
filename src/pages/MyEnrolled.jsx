@@ -80,7 +80,7 @@ const MyEnrolled = () => {
     return (
         <div className='pt-16'>
             <div className="overflow-x-auto w-11/12 mx-auto">
-                <h2 className="text-2xl font-bold mb-6 text-center text-gray-800">Your Enrolled Courses</h2>
+                <h2 className="text-2xl font-bold mb-6 text-center text-gray-800 dark:text-white">Your Enrolled Courses</h2>
                 <table className="min-w-full bg-white border border-gray-300 rounded-lg overflow-hidden shadow-md">
                     <thead className="bg-gradient-to-r from-green-100 to-green-200 text-gray-700">
                         <tr>
@@ -91,7 +91,7 @@ const MyEnrolled = () => {
                     </thead>
                     <tbody>
                         {myEnrolled.map(course => (
-                            <tr key={course._id} className="border-t hover:bg-gray-50 transition duration-200">
+                            <tr key={course._id} className="border-t dark:border-gray-600 hover:bg-gray-50 transition duration-200">
                                 <td className="px-4 py-3 text-sm text-gray-800">{course.title}</td>
                                 <td className="px-4 py-3 text-sm text-gray-700">{course.description}</td>
                                 <td className="px-4 py-3">

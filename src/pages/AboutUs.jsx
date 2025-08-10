@@ -7,9 +7,9 @@ const AboutUs = () => {
 }, []);
     return (
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-            <h1 className="text-3xl font-semibold text-center text-gray-800 mb-2">About Us</h1>
+            <h1 className="text-3xl font-semibold text-center text-gray-800 mb-2 dark:text-white">About Us</h1>
 
-            <p className="text-gray-700 text-base sm:text-lg text-center leading-relaxed mb-10 max-w-3xl mx-auto px-2">
+            <p className="text-gray-700 text-base sm:text-lg text-center leading-relaxed mb-10 max-w-3xl mx-auto px-2 dark:text-white">
                 Welcome to <span className="font-semibold text-blue-500">EduPath</span> — your trusted course management platform!
                 We believe in the power of learning and strive to deliver high-quality education for everyone. Whether you're just starting
                 out or advancing your career, we're here to support your growth.
@@ -37,7 +37,7 @@ const AboutUs = () => {
 
             {/* Core Values Section */}
             <div className="mb-12">
-                <h3 className="text-2xl font-semibold text-center text-gray-800 mb-6">Our Core Values</h3>
+                <h3 className="text-2xl font-semibold text-center text-gray-800 mb-6 dark:text-white">Our Core Values</h3>
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                     <div className="bg-white p-6 rounded-lg shadow hover:shadow-md transition">
                         <h4 className="font-bold text-blue-400 mb-2 text-lg">📚 Lifelong Learning</h4>
@@ -62,8 +62,8 @@ const AboutUs = () => {
 
             {/* Team Section */}
             <div className="text-center px-2">
-                <h3 className="text-2xl font-semibold text-gray-800 mb-3">Our Community</h3>
-                <p className="text-gray-600 max-w-2xl mx-auto mb-6 text-sm sm:text-base leading-relaxed">
+                <h3 className="text-2xl font-semibold text-gray-800 mb-3 dark:text-white">Our Community</h3>
+                <p className="text-gray-600 max-w-2xl mx-auto mb-6 text-sm sm:text-base leading-relaxed dark:text-white">
                     We are more than a platform — we are a learning family. With thousands of learners and instructors worldwide, we grow together through collaboration and support.
                 </p>
                 <div className="flex justify-center text-4xl text-green-500">

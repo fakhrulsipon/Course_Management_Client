@@ -79,7 +79,7 @@ const AddCourse = () => {
     return (
 
 <div className="min-h-screen pt-10 px-4 sm:px-8 lg:px-16 xl:px-24">
-    <h2 className="text-3xl font-bold text-center text-blue-400">Add New Course</h2>
+    <h2 className="text-3xl font-bold text-center text-blue-400 dark:text-white">Add New Course</h2>
   <div className="flex justify-center items-center gap-10 w-full">
     
     {/* Form Section */}
@@ -88,7 +88,7 @@ const AddCourse = () => {
       <form onSubmit={handleAddCourse} className="space-y-5">
         {/* Course Title */}
         <div>
-          <label className="block text-md font-semibold mb-1 flex items-center gap-2 text-blue-900">
+          <label className="block text-md font-semibold mb-1 flex items-center gap-2 text-blue-900 dark:text-white">
             <FiBookOpen className="text-xl" /> Course Title
           </label>
           <input
@@ -102,7 +102,7 @@ const AddCourse = () => {
 
         {/* Short Description */}
         <div>
-          <label className="block text-md font-semibold mb-1 flex items-center gap-2 text-blue-900">
+          <label className="block text-md font-semibold mb-1 flex items-center gap-2 text-blue-900 dark:text-white">
             <FiFileText className="text-xl" /> Short Description
           </label>
           <textarea
@@ -116,7 +116,7 @@ const AddCourse = () => {
 
         {/* Image URL */}
         <div>
-          <label className="block text-md font-semibold mb-1 flex items-center gap-2 text-blue-900">
+          <label className="block text-md font-semibold mb-1 flex items-center gap-2 text-blue-900 dark:text-white">
             <FiImage className="text-xl" /> Image URL
           </label>
           <input
@@ -130,7 +130,7 @@ const AddCourse = () => {
 
         {/* Duration */}
         <div>
-          <label className="block text-md font-semibold mb-1 flex items-center gap-2 text-blue-900">
+          <label className="block text-md font-semibold mb-1 flex items-center gap-2 text-blue-900 dark:text-white">
             <FiClock className="text-xl" /> Duration (e.g., 4 Month)
           </label>
           <input
@@ -144,7 +144,7 @@ const AddCourse = () => {
 
         {/* Duration */}
         <div>
-          <label className="block text-md font-semibold mb-1 flex items-center gap-2 text-blue-900">
+          <label className="block text-md font-semibold mb-1 flex items-center gap-2 text-blue-900 dark:text-white">
             <FaMoneyBillWave className="text-xl" /> Price (tk)
           </label>
           <input
@@ -158,7 +158,7 @@ const AddCourse = () => {
 
         {/* Available Seats */}
         <div>
-          <label className="block text-md font-semibold mb-1 flex items-center gap-2 text-blue-900">
+          <label className="block text-md font-semibold mb-1 flex items-center gap-2 text-blue-900 dark:text-white">
             <FiUsers className="text-xl" /> Available Seats
           </label>
           <input

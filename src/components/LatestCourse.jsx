@@ -32,8 +32,8 @@ const LatestCourse = () => {
 
   return (
     <div className="w-11/12 mx-auto px-4 mt-8 md:mt-12 lg:mt-16">
-      <h2 className="text-3xl font-semibold text-center text-gray-800 mb-2">Latest Courses</h2>
-      <p className="text-center text-gray-500 mb-10 max-w-xl mx-auto">
+      <h2 className="text-3xl font-semibold text-center text-gray-800 mb-2 dark:text-white">Latest Courses</h2>
+      <p className="text-center text-gray-500 mb-10 max-w-xl mx-auto dark:text-white">
         Explore our newest additions — handpicked to help you gain in-demand skills faster and smarter.
       </p>
 

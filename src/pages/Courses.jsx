@@ -17,7 +17,7 @@ const Courses = () => {
   useEffect(() => {
     const handler = setTimeout(() => {
       setDebouncedSearch(searchTerm);
-      setCurrentPage(1); // নতুন সার্চে পেজ 1 এ রিসেট
+      setCurrentPage(1);
     }, 1200);
 
     return () => {
@@ -73,8 +73,8 @@ const Courses = () => {
   return (
     <div className="w-11/12 mx-auto pt-16 px-4">
       {/* Static Section Title + Description */}
-      <h2 className="text-3xl font-semibold text-center text-gray-800 mb-2">All Available Courses</h2>
-      <p className="text-center text-gray-500 mb-10 max-w-2xl mx-auto">
+      <h2 className="text-3xl font-semibold text-center text-gray-800 mb-2 dark:text-white">All Available Courses</h2>
+      <p className="text-center text-gray-500 mb-10 max-w-2xl mx-auto dark:text-white">
         Browse through our collection of diverse and high-quality courses designed by expert instructors to help you upgrade your skills and knowledge.
       </p>
 
@@ -85,7 +85,7 @@ const Courses = () => {
           placeholder="Search courses by title..."
           value={searchTerm}
           onChange={handleSearchChange}
-          className="border border-gray-400 rounded-lg px-3 py-2 w-96 text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-400"
+          className="border border-gray-400 rounded-lg px-3 py-2 w-96 text-gray-700 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-400"
         />
       </div>
 
@@ -94,7 +94,7 @@ const Courses = () => {
         <select
           value={sortOrder}
           onChange={handleSortChange}
-          className="border border-gray-400 rounded-lg px-3 py-2 text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-400"
+          className="border border-gray-400 rounded-lg px-3 py-2 text-gray-700 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-400"
         >
           <option value="">Sort by Price</option>
           <option value="ascending">Low to High</option>

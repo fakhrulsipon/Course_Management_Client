@@ -15,7 +15,7 @@ const ManageCourses = () => {
     const [loading, setLoading] = useState(true);
     const [currentPage, setCurrentPage] = useState(1);
     const [totalPages, setTotalPages] = useState(1);
-    const limit = 2;
+    const limit = 5;
 
     // console.log(myCourses)
 
@@ -90,7 +90,7 @@ const ManageCourses = () => {
     return (
         <div className='pt-10'>
             <div className="overflow-x-auto px-4 lg:w-11/12 mx-auto">
-                <h2 className="text-2xl font-bold mb-6 text-center text-gray-800">Your Added Courses</h2>
+                <h2 className="text-2xl font-bold mb-6 text-center text-gray-800 dark:text-white">Your Added Courses</h2>
                 <table className="min-w-full bg-white border border-gray-300 rounded-lg overflow-hidden shadow-md">
                     <thead className="bg-gradient-to-r from-blue-400 to-blue-200 text-gray-700">
                         <tr>
@@ -101,7 +101,7 @@ const ManageCourses = () => {
                     </thead>
                     <tbody>
                         {myCourses.map(course => (
-                            <tr key={course._id} className="border-t hover:bg-gray-50 transition duration-200">
+                            <tr key={course._id} className="border-t dark:border-gray-600 hover:bg-gray-50 transition duration-200">
                                 <td className="px-4 py-3 text-sm text-gray-800">{course.title}</td>
                                 <td className="px-4 py-3 text-sm text-gray-700">{course.description}</td>
                                 <td className="px-4 py-3">

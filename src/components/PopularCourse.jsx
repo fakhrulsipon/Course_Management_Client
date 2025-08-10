@@ -30,8 +30,8 @@ function PopularCourses() {
 
   return (
    <div className="w-11/12 mx-auto mt-8 md:mt-12 lg:mt-16 px-4">
-  <h2 className="text-3xl font-semibold text-center text-gray-800 mb-2">Popular Courses</h2>
-  <p className="text-center text-gray-500 mb-10 max-w-xl mx-auto">
+  <h2 className="text-3xl font-semibold text-center text-gray-800 mb-2 dark:text-white">Popular Courses</h2>
+  <p className="text-center text-gray-500 mb-10 max-w-xl mx-auto dark:text-white">
     Discover the most enrolled courses chosen by thousands of learners to upgrade their skills fast.
   </p>
 

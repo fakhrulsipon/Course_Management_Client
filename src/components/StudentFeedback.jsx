@@ -3,7 +3,7 @@ import React from 'react';
 const StudentFeedback = () => {
   return (
     <div className="w-11/12 mx-auto px-4 mt-8 md:mt-12 lg:mt-16">
-      <h2 className="text-3xl font-semibold text-center text-gray-800 mb-6">What Our Students Say</h2>
+      <h2 className="text-3xl font-semibold text-center text-gray-800 mb-6 dark:text-white">What Our Students Say</h2>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
 
         {/* Card 1 */}

@@ -32,7 +32,7 @@ const Navbar = () => {
     : "hover:text-blue-400 transition-all duration-200";
 
   return (
-    <div className="relative z-50 navbar bg-base-100/80 backdrop-blur-md shadow-md w-full mt-3  px-4 sm:px-6 md:px-10 lg:px-16 xl:px-20">
+    <div className="relative z-50 navbar bg-base-100/80 backdrop-blur-md shadow-md w-full  px-4 sm:px-6 md:px-10 lg:px-16 xl:px-20">
       <div className="navbar-start">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -69,9 +69,14 @@ const Navbar = () => {
         </ul>
       </div>
 
-      <div className="navbar-end gap-3 relative z-50">
-        <ThemeToggle></ThemeToggle>
-        {
+      <div className="navbar-end flex items-center gap-3">
+
+        <div>
+          <ThemeToggle></ThemeToggle>
+        </div>
+        
+        <div>
+          {
           user ? (
             <div className="dropdown dropdown-end">
               <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar hover:ring hover:ring-primary transition-all duration-300">
@@ -89,8 +94,10 @@ const Navbar = () => {
             </>
           )
         }
+        </div>
         
       </div>
+
     </div>
   );
 };

@@ -47,7 +47,7 @@ const EditCourse = () => {
 
     return (
         <div className="min-h-screen pt-16 px-6">
-            <h1 className="flex items-center justify-center text-3xl font-bold mb-6 text-gray-800 gap-2">
+            <h1 className="flex items-center justify-center text-3xl font-bold mb-6 text-gray-800 gap-2 dark:text-white">
                 <FaEdit className="text-blue-500" /> Edit Course
             </h1>
             <div className="lg:flex justify-center items-center gap-8 w-full max-w-6xl mx-auto">
@@ -80,68 +80,68 @@ const EditCourse = () => {
 
                         {/* Course Title */}
                         <div>
-                            <label className="block mb-1 text-gray-700 font-medium">Course Title</label>
+                            <label className="block mb-1 text-gray-700 font-medium dark:text-gray-200">Course Title</label>
                             <input
                                 type="text"
                                 name="title"
                                 defaultValue={course.title}
-                                className="w-full bg-white px-4 py-2 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-400"
+                                className="w-full bg-white px-4 py-2 dark:text-gray-600 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-400"
                             />
                         </div>
 
                         {/* Short Description */}
                         <div>
-                            <label className="block mb-1 text-gray-700 font-medium">Short Description</label>
+                            <label className="block mb-1 text-gray-700 font-medium dark:text-gray-200">Short Description</label>
                             <textarea
                                 name="description"
                                 defaultValue={course.description}
-                                className="w-full bg-white px-4 py-2 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-400"
+                                className="w-full bg-white px-4 py-2 rounded-lg dark:text-gray-600 shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-400"
                                 rows={6}
                             />
                         </div>
 
                         {/* Image URL */}
                         <div>
-                            <label className="block mb-1 text-gray-700 font-medium">Image URL</label>
+                            <label className="block mb-1 text-gray-700 font-medium dark:text-gray-200">Image URL</label>
                             <input
                                 type="text"
                                 name="image"
                                 value={course.image}
-                                className="w-full bg-white px-4 py-2 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-400"
+                                className="dark:text-gray-600 w-full bg-white px-4 py-2 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-400"
                             />
                         </div>
 
                         {/* Duration */}
                         <div>
-                            <label className="block mb-1 text-gray-700 font-medium">Duration</label>
+                            <label className="block mb-1 text-gray-700 font-medium dark:text-gray-200">Duration</label>
                             <input
                                 type="text"
                                 name="duration"
                                 defaultValue={course.duration}
-                                className="w-full bg-white px-4 py-2 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-400"
+                                className="dark:text-gray-600 w-full bg-white px-4 py-2 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-400"
                             />
                         </div>
 
                         {/* price */}
                         <div>
-                            <label className="block mb-1 text-gray-700 font-medium">Price</label>
+                            <label className="block mb-1 text-gray-700 font-medium dark:text-gray-200">Price</label>
                             <input
                                 type="number"
                                 name="price"
                                 defaultValue={course.price}
-                                className="w-full bg-white px-4 py-2 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-400"
+                                className="dark:text-gray-600 w-full bg-white px-4 py-2 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-400"
                             />
                         </div>
 
                         {/* Available Seats */}
                         <div>
-                            <label className="block text-gray-700 font-medium mb-1">Available Seats</label>
+                            <label className="block text-gray-700 font-medium mb-1 dark:text-gray-200">Available Seats</label>
                             <input
                                 type="number"
                                 name="availableSeats"
                                 min="1"
                                 defaultValue={course.availableSeats}
-                                className="w-full bg-white px-4 py-2 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-400"
+                                className="dark:text-gray-600 w-full bg-white px-4 py-2 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-400"
                             />
                         </div>
 
