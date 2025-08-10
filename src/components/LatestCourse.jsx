@@ -41,7 +41,7 @@ const LatestCourse = () => {
         {courses.map(course => (
           <div
             key={course._id}
-            className="group bg-white shadow-xl rounded-2xl p-5 transition-transform hover:-translate-y-2 border border-transparent hover:border-primary/30"
+            className="group bg-white shadow-xl rounded-2xl p-5 transition-transform border border-transparent hover:border-primary/30"
           >
             <div className="overflow-hidden rounded-xl">
               <img

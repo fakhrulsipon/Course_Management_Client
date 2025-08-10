@@ -7,13 +7,17 @@ import { FaTag, FaUserTie } from 'react-icons/fa';
 const Courses = () => {
   const [courses, setCourses] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [sortOrder, setSortOrder] = useState('');
+   const [currentPage, setCurrentPage] = useState(1)
+   const [totalPages, setTotalPages] = useState(1);
+    const limit = 5;
 
-  useEffect(() => {
-    document.title = 'All Courses | EduPath';
-    setLoading(true)
-    axios.get('http://localhost:3000/courses')
+  const fetchCourses = (sort = '', page = 1) => {
+    setLoading(true);
+    axios.get(`http://localhost:3000/courses?limit=${limit}&page=${page}&sort=${sort}`)
       .then(res => {
-        setCourses(res.data);
+        setCourses(res.data.courses);
+        setTotalPages(res.data.totalPages)
         setLoading(false);
       })
       .catch(error => {
@@ -24,6 +28,14 @@ const Courses = () => {
         });
         setLoading(false);
       });
+  };
+
+  useEffect(() => {
+    fetchCourses(sortOrder, currentPage);
+  }, [sortOrder, currentPage]);
+
+  useEffect(() => {
+    document.title = 'All Courses | EduPath';
   }, []);
 
   if (loading) {
@@ -34,6 +46,12 @@ const Courses = () => {
     );
   }
 
+  const handleSortChange = (e) => {
+    const value = e.target.value;
+    setSortOrder(value);
+    setCurrentPage(1);
+  };
+
   return (
     <div className="w-11/12 mx-auto pt-16 px-4">
       {/* Static Section Title + Description */}
@@ -41,6 +59,20 @@ const Courses = () => {
       <p className="text-center text-gray-500 mb-10 max-w-2xl mx-auto">
         Browse through our collection of diverse and high-quality courses designed by expert instructors to help you upgrade your skills and knowledge.
       </p>
+
+      {/* Sort Dropdown */}
+      <div className="flex justify-center mb-6">
+        <select
+          value={sortOrder}
+          onChange={handleSortChange}
+          className="border border-gray-400 rounded-lg px-3 py-2 text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-400"
+        >
+          <option value="">Sort by Price</option>
+          <option value="ascending">Low to High</option>
+          <option value="descending">High to Low</option>
+        </select>
+      </div>
+
 
       {/* Course Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -84,6 +116,97 @@ const Courses = () => {
           </div>
         ))}
       </div>
+
+
+      {/* Pagination Buttons */}
+      <div className="join flex flex-wrap justify-center mt-6 gap-2">
+        {/* Previous Button */}
+        <button
+          className="join-item btn btn-sm"
+          onClick={() => setCurrentPage(prev => Math.max(prev - 1, 1))}
+          disabled={currentPage === 1}
+        >
+          «
+        </button>
+
+        {/* Dynamic Page Numbers */}
+        {(() => {
+          const pages = [];
+          const maxVisiblePages = 5;
+          let startPage, endPage;
+
+          if (totalPages <= maxVisiblePages) {
+            startPage = 1;
+            endPage = totalPages;
+          } else {
+            const half = Math.floor(maxVisiblePages / 2);
+            if (currentPage <= half + 1) {
+              startPage = 1;
+              endPage = maxVisiblePages;
+            } else if (currentPage >= totalPages - half) {
+              startPage = totalPages - maxVisiblePages + 1;
+              endPage = totalPages;
+            } else {
+              startPage = currentPage - half;
+              endPage = currentPage + half;
+            }
+          }
+
+          if (startPage > 1) {
+            pages.push(
+              <button
+                key={1}
+                className={`join-item btn btn-sm ${currentPage === 1 ? 'btn-active' : ''}`}
+                onClick={() => setCurrentPage(1)}
+              >
+                1
+              </button>
+            );
+            if (startPage > 2) {
+              pages.push(<span key="start-ellipsis" className="join-item btn btn-sm disabled">...</span>);
+            }
+          }
+
+          for (let i = startPage; i <= endPage; i++) {
+            pages.push(
+              <button
+                key={i}
+                className={`join-item btn btn-sm ${currentPage === i ? 'btn-active' : ''}`}
+                onClick={() => setCurrentPage(i)}
+              >
+                {i}
+              </button>
+            );
+          }
+
+          if (endPage < totalPages) {
+            if (endPage < totalPages - 1) {
+              pages.push(<span key="end-ellipsis" className="join-item btn btn-sm disabled">...</span>);
+            }
+            pages.push(
+              <button
+                key={totalPages}
+                className={`join-item btn btn-sm ${currentPage === totalPages ? 'btn-active' : ''}`}
+                onClick={() => setCurrentPage(totalPages)}
+              >
+                {totalPages}
+              </button>
+            );
+          }
+
+          return pages;
+        })()}
+
+        {/* Next Button */}
+        <button
+          className="join-item btn btn-sm"
+          onClick={() => setCurrentPage(prev => Math.min(prev + 1, totalPages))}
+          disabled={currentPage === totalPages}
+        >
+          »
+        </button>
+      </div>
+
     </div>
 
   );

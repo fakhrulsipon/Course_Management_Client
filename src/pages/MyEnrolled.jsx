@@ -12,16 +12,20 @@ const MyEnrolled = () => {
     const [myEnrolled, setMyEnrolled] = useState([]);
     // console.log(myEnrolled)
     const [loading, setLoading] = useState(true)
+    const[currentPage, setCurrentPage] = useState(1);
+    const [totalPages, setTotalPages] = useState(1);
+    const limit = 1;
 
     useEffect(() => {
         if (user?.email) {
-            axios.get(`http://localhost:3000/enrolled-courses?email=${user.email}`, {
+            axios.get(`http://localhost:3000/enrolled-courses?email=${user.email}&page=${currentPage}&limit=${limit}`, {
                 headers: {
                     Authorization: `Bearer ${user.accessToken}`
                 }
             })
                 .then(res => {
-                    setMyEnrolled(res.data)
+                    setMyEnrolled(res.data.courses)
+                    setTotalPages(res.data.totalPages)
                     setLoading(false)
                 })
                 .catch(error => {
@@ -33,7 +37,7 @@ const MyEnrolled = () => {
                     setLoading(false)
                 })
         }
-    }, [user])
+    }, [user, currentPage, limit])
 
     if (loading) {
         return (
@@ -90,7 +94,7 @@ const MyEnrolled = () => {
                         </tr>
                     </thead>
                     <tbody>
-                        {myEnrolled.map(course => (
+                        {myEnrolled?.map(course => (
                             <tr key={course._id} className="border-t hover:bg-gray-50 transition duration-200">
                                 <td className="px-4 py-3 text-sm text-gray-800">{course.title}</td>
                                 <td className="px-4 py-3 text-sm text-gray-700">{course.description}</td>
@@ -104,6 +108,96 @@ const MyEnrolled = () => {
                     </tbody>
                 </table>
             </div>
+
+            {/* Pagination Buttons */}
+            <div className="join flex flex-wrap justify-center mt-6 gap-2">
+                {/* Previous Button */}
+                <button
+                    className="join-item btn btn-sm"
+                    onClick={() => setCurrentPage(prev => Math.max(prev - 1, 1))}
+                    disabled={currentPage === 1}
+                >
+                    «
+                </button>
+
+                {/* Dynamic Page Numbers */}
+                {(() => {
+                    const pages = [];
+                    const maxVisiblePages = 5;
+                    let startPage, endPage;
+
+                    if (totalPages <= maxVisiblePages) {
+                        startPage = 1;
+                        endPage = totalPages;
+                    } else {
+                        const half = Math.floor(maxVisiblePages / 2);
+                        if (currentPage <= half + 1) {
+                            startPage = 1;
+                            endPage = maxVisiblePages;
+                        } else if (currentPage >= totalPages - half) {
+                            startPage = totalPages - maxVisiblePages + 1;
+                            endPage = totalPages;
+                        } else {
+                            startPage = currentPage - half;
+                            endPage = currentPage + half;
+                        }
+                    }
+
+                    if (startPage > 1) {
+                        pages.push(
+                            <button
+                                key={1}
+                                className={`join-item btn btn-sm ${currentPage === 1 ? 'btn-active' : ''}`}
+                                onClick={() => setCurrentPage(1)}
+                            >
+                                1
+                            </button>
+                        );
+                        if (startPage > 2) {
+                            pages.push(<span key="start-ellipsis" className="join-item btn btn-sm disabled">...</span>);
+                        }
+                    }
+
+                    for (let i = startPage; i <= endPage; i++) {
+                        pages.push(
+                            <button
+                                key={i}
+                                className={`join-item btn btn-sm ${currentPage === i ? 'btn-active' : ''}`}
+                                onClick={() => setCurrentPage(i)}
+                            >
+                                {i}
+                            </button>
+                        );
+                    }
+
+                    if (endPage < totalPages) {
+                        if (endPage < totalPages - 1) {
+                            pages.push(<span key="end-ellipsis" className="join-item btn btn-sm disabled">...</span>);
+                        }
+                        pages.push(
+                            <button
+                                key={totalPages}
+                                className={`join-item btn btn-sm ${currentPage === totalPages ? 'btn-active' : ''}`}
+                                onClick={() => setCurrentPage(totalPages)}
+                            >
+                                {totalPages}
+                            </button>
+                        );
+                    }
+
+                    return pages;
+                })()}
+
+                {/* Next Button */}
+                <button
+                    className="join-item btn btn-sm"
+                    onClick={() => setCurrentPage(prev => Math.min(prev + 1, totalPages))}
+                    disabled={currentPage === totalPages}
+                >
+                    »
+                </button>
+            </div>
+
         </div>
     );
 };

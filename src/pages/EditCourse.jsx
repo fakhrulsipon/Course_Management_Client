@@ -44,6 +44,7 @@ const EditCourse = () => {
 
     }
 
+
     return (
         <div className="min-h-screen pt-16 px-6">
             <h1 className="flex items-center justify-center text-3xl font-bold mb-6 text-gray-800 gap-2">
@@ -105,7 +106,7 @@ const EditCourse = () => {
                             <input
                                 type="text"
                                 name="image"
-                                defaultValue={course.image}
+                                value={course.image}
                                 className="w-full bg-white px-4 py-2 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-400"
                             />
                         </div>
@@ -155,6 +156,7 @@ const EditCourse = () => {
                 </div>
 
             </div>
+            
         </div>
 
 
