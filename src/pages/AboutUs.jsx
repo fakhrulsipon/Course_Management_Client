@@ -18,7 +18,7 @@ const AboutUs = () => {
             {/* Mission and Vision */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
                 <div className="bg-blue-50 p-6 sm:p-8 rounded-xl shadow hover:shadow-lg transition">
-                    <h2 className="text-xl sm:text-2xl font-bold mb-3 text-blue-700 flex items-center gap-2">
+                    <h2 className="text-xl sm:text-2xl font-bold mb-3 text-blue-400 flex items-center gap-2">
                         <FaRocket /> Our Mission
                     </h2>
                     <p className="text-gray-700 text-sm sm:text-base leading-relaxed">
@@ -26,7 +26,7 @@ const AboutUs = () => {
                     </p>
                 </div>
                 <div className="bg-green-50 p-6 sm:p-8 rounded-xl shadow hover:shadow-lg transition">
-                    <h2 className="text-xl sm:text-2xl font-bold mb-3 text-green-700 flex items-center gap-2">
+                    <h2 className="text-xl sm:text-2xl font-bold mb-3 text-green-400 flex items-center gap-2">
                         <FaGraduationCap /> Our Vision
                     </h2>
                     <p className="text-gray-700 text-sm sm:text-base leading-relaxed">
@@ -39,20 +39,20 @@ const AboutUs = () => {
             <div className="mb-12">
                 <h3 className="text-2xl font-semibold text-center text-gray-800 mb-6">Our Core Values</h3>
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                    <div className="bg-white p-6 border rounded-lg shadow hover:shadow-md transition">
-                        <h4 className="font-bold text-green-600 mb-2 text-lg">📚 Lifelong Learning</h4>
+                    <div className="bg-white p-6 rounded-lg shadow hover:shadow-md transition">
+                        <h4 className="font-bold text-blue-400 mb-2 text-lg">📚 Lifelong Learning</h4>
                         <p className="text-gray-600 text-sm sm:text-base">
                             We believe education is a journey, not a destination. We encourage learning at every stage of life.
                         </p>
                     </div>
-                    <div className="bg-white p-6 border rounded-lg shadow hover:shadow-md transition">
-                        <h4 className="font-bold text-purple-600 mb-2 text-lg">🤝 Inclusivity</h4>
+                    <div className="bg-white p-6 rounded-lg shadow hover:shadow-md transition">
+                        <h4 className="font-bold text-green-600 mb-2 text-lg">🤝 Inclusivity</h4>
                         <p className="text-gray-600 text-sm sm:text-base">
                             We welcome learners from all backgrounds and strive to build a diverse and inclusive environment.
                         </p>
                     </div>
-                    <div className="bg-white p-6 border rounded-lg shadow hover:shadow-md transition">
-                        <h4 className="font-bold text-blue-600 mb-2 text-lg">💡 Innovation</h4>
+                    <div className="bg-white p-6 rounded-lg shadow hover:shadow-md transition">
+                        <h4 className="font-bold text-red-400 mb-2 text-lg">💡 Innovation</h4>
                         <p className="text-gray-600 text-sm sm:text-base">
                             We embrace technology to create smarter, more engaging, and effective ways to learn.
                         </p>

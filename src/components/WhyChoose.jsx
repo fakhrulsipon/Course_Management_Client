@@ -12,7 +12,7 @@ const WhyChoose = () => {
             alt="Expert"
             className="w-16 mx-auto mb-4 drop-shadow-md"
           />
-          <h3 className="text-lg font-semibold mb-2 text-blue-700">Expert Instructors</h3>
+          <h3 className="text-lg font-semibold mb-2 text-blue-400">Expert Instructors</h3>
           <p className="text-gray-600">Learn from industry professionals with real-world experience.</p>
         </div>
 
@@ -22,7 +22,7 @@ const WhyChoose = () => {
             alt="Flexible"
             className="w-16 mx-auto mb-4 drop-shadow-md"
           />
-          <h3 className="text-lg font-semibold mb-2 text-blue-700">Flexible Learning</h3>
+          <h3 className="text-lg font-semibold mb-2 text-blue-400">Flexible Learning</h3>
           <p className="text-gray-600">Study anytime, anywhere at your own pace with lifetime access.</p>
         </div>
 
@@ -32,7 +32,7 @@ const WhyChoose = () => {
             alt="Certification"
             className="w-16 mx-auto mb-4 drop-shadow-md"
           />
-          <h3 className="text-lg font-semibold mb-2 text-blue-700">Certification</h3>
+          <h3 className="text-lg font-semibold mb-2 text-blue-400">Certification</h3>
           <p className="text-gray-600">Get certificates that enhance your resume and career.</p>
         </div>
 

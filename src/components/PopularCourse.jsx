@@ -5,7 +5,7 @@ import { Link } from "react-router";
 function PopularCourses() {
   const [courses, setCourses] = useState([]);
   const [loading, setLoading] = useState(true)
-console.log(courses)
+// console.log(courses)
 
   useEffect(() => {
     setLoading(true)

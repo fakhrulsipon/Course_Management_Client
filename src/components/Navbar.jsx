@@ -83,8 +83,7 @@ const Navbar = () => {
             </div>
           ) : (
             <>
-              <Link className="btn btn-outline hover:bg-blue-400 hover:text-white mr-2 transition duration-300 hover:scale-105" to="/login">Login</Link>
-              <Link className="btn bg-gradient-to-r from-blue-400 to-secondary text-white hover:brightness-110 transition duration-300" to="/register">Register</Link>
+              <Link className="btn bg-blue-400 text-white hover:bg-blue-600 hover:text-white mr-2 transition duration-300 hover:scale-105" to="/login">Login</Link>
             </>
           )
         }
