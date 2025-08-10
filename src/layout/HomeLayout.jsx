@@ -10,7 +10,7 @@ const HomeLayout = () => {
             <nav className="sticky top-0 z-50 bg-white shadow-md">
               <Navbar></Navbar>  
             </nav>
-            <div className='bg-blue-100 pb-16'>
+            <div className='pb-16'>
                 <Outlet></Outlet>
             </div>
             <Footer></Footer>
