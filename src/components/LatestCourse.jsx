@@ -10,7 +10,7 @@ const LatestCourse = () => {
 
   useEffect(() => {
     setLoading(true)
-    axios.get('http://localhost:3000/latest-course')
+    axios.get(' https://edupath-server.vercel.app/latest-course')
       .then(res => {
         setCourses(res.data);
         setLoading(false)

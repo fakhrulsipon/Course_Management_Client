@@ -22,7 +22,7 @@ const ManageCourses = () => {
    useEffect(() => {
         setLoading(true);
         if (user?.email) {
-            axios.get(`http://localhost:3000/my-courses?email=${user.email}&page=${currentPage}&limit=${limit}`, {
+            axios.get(`https://edupath-server.vercel.app/my-courses?email=${user.email}&page=${currentPage}&limit=${limit}`, {
                 headers: {
                     Authorization: `Bearer ${user.accessToken}`
                 }
@@ -64,7 +64,7 @@ const ManageCourses = () => {
         }).then((result) => {
             if (result.isConfirmed) {
 
-                axios.delete(`http://localhost:3000/delete-course/${id}`)
+                axios.delete(` https://edupath-server.vercel.app/delete-course/${id}`)
                     .then(res => {
                         if (res.data.deletedCount) {
                             Swal.fire({

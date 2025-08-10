@@ -40,7 +40,7 @@ const AddCourse = () => {
 
         }
 
-        axios.post('http://localhost:3000/add-course', newCourse)
+        axios.post(' https://edupath-server.vercel.app/add-course', newCourse)
             .then(res => {
                 if (res.data.insertedId) {
                     Swal.fire({

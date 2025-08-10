@@ -9,7 +9,7 @@ function PopularCourses() {
 
   useEffect(() => {
     setLoading(true)
-    axios.get("http://localhost:3000/popular-courses")
+    axios.get(" https://edupath-server.vercel.app/popular-courses")
       .then(response => {
         setCourses(response.data)
         setLoading(false)

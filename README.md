@@ -1,7 +1,7 @@
 # 📚 EduPath - A Complete Course Management System
 
 ## 🌐 Live Website
-[🔗 Visit Live Site](https://subscription-box-2faea.web.app/)
+[🔗 Visit Live Site](https://edupath-server.vercel.app/)
 
 ## 🎯 Project Purpose
 **CourseMaster** is a full-stack course management system where users can:

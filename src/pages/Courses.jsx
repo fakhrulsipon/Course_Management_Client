@@ -27,7 +27,7 @@ const Courses = () => {
 
   const fetchCourses = (sort = '', page = 1, search = '') => {
     setLoading(true);
-    axios.get(`http://localhost:3000/courses?limit=${limit}&page=${page}&sort=${sort}&search=${search}`)
+    axios.get(` https://edupath-server.vercel.app/courses?limit=${limit}&page=${page}&sort=${sort}&search=${search}`)
       .then(res => {
         setCourses(res.data.courses);
         setTotalPages(res.data.totalPages)

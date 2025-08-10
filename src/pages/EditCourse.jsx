@@ -20,7 +20,7 @@ const EditCourse = () => {
         const editCourse = Object.fromEntries(formData.entries())
         // console.log(editCourse)
 
-        axios.put(`http://localhost:3000/update-course/${course._id}`, editCourse)
+        axios.put(` https://edupath-server.vercel.app/update-course/${course._id}`, editCourse)
             .then(res => {
                 if (res.data.modifiedCount) {
                     Swal.fire({

@@ -15,7 +15,7 @@ const MyEnrolled = () => {
 
     useEffect(() => {
         if (user?.email) {
-            axios.get(`http://localhost:3000/enrolled-courses?email=${user.email}`, {
+            axios.get(` https://edupath-server.vercel.app/enrolled-courses?email=${user.email}`, {
                 headers: {
                     Authorization: `Bearer ${user.accessToken}`
                 }
@@ -54,7 +54,7 @@ const MyEnrolled = () => {
             confirmButtonText: "Yes, delete it!"
         }).then((result) => {
             if (result.isConfirmed) {
-                axios.delete(`http://localhost:3000/delete-enrolled/${id}/${user.email}`)
+                axios.delete(` https://edupath-server.vercel.app/delete-enrolled/${id}/${user.email}`)
                     .then(res => {
                         if (res.data.deletedCount) {
                             Swal.fire({
