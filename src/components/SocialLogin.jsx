@@ -2,6 +2,7 @@ import React, { use } from 'react';
 import { AuthContext } from '../Provider/AuthProvider';
 import Swal from 'sweetalert2';
 import { useLocation, useNavigate } from 'react-router';
+import axios from 'axios';
 
 
 
@@ -10,9 +11,25 @@ const SocialLogin = () => {
     const location = useLocation()
    const navigate = useNavigate()
 
+   // Simple function to save user
+     const saveUserToDB = async (userData) => {
+       try {
+         await axios.post("https://coursemanagementserver-production.up.railway.app/save-user", userData);
+       } catch (error) {
+         console.log("User save note:", error.response?.data?.message);
+       }
+     };
+
 const handleGoogle = () => {
     signInGoogle()
       .then(res => {
+        // Save to database
+            saveUserToDB({
+              userName: res.user.displayName,
+              userEmail: res.user.email,
+              userPhoto: res.user.photoURL,
+              userRole: "user",
+            });
         Swal.fire({
           icon: 'success',
           title: 'Login Successful',
@@ -36,6 +53,13 @@ const handleGoogle = () => {
 const handleGithub = () => {
     signInGithub()
       .then(res => {
+        //  Save to database
+            saveUserToDB({
+              userName: res.user.displayName,
+              userEmail: res.user.email,
+              userPhoto: res.user.photoURL,
+              userRole: "user",
+            });
         Swal.fire({
           icon: 'success',
           title: 'Login Successful',

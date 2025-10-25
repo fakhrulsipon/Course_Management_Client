@@ -20,6 +20,8 @@ import PrivetRoute from './Provider/PrivetRoute';
 import AboutUs from './pages/AboutUs';
 import NotFoundPage from './pages/NotFoundPage';
 import Courses from './pages/Courses';
+import DashboardLayout from './layout/DashboardLayout';
+import ManageMessages from './pages/ManageMessages';
 
 const router = createBrowserRouter([
   {
@@ -44,7 +46,7 @@ const router = createBrowserRouter([
       },
       {
         path: '/course-details/:id',
-        loader: ({params}) => fetch(` https://edupath-server.vercel.app/course-details/${params.id}`),
+        loader: ({params}) => fetch(` https://coursemanagementserver-production.up.railway.app/course-details/${params.id}`),
         hydrateFallbackElement: <span className="loading loading-bars loading-xl"></span>,
         element: <CourseDetails></CourseDetails>
       },
@@ -54,7 +56,7 @@ const router = createBrowserRouter([
       },
       {
         path: '/edit-course/:id',
-        loader: ({params}) => fetch(` https://edupath-server.vercel.app/course-details/${params.id}`),
+        loader: ({params}) => fetch(` https://coursemanagementserver-production.up.railway.app/course-details/${params.id}`),
         hydrateFallbackElement: <span className="loading loading-bars loading-xl"></span>,
         element: <PrivetRoute><EditCourse></EditCourse></PrivetRoute>
       },
@@ -72,6 +74,31 @@ const router = createBrowserRouter([
       }
     ]
   },
+
+  {
+    path: '/dashboard',
+    element: <PrivetRoute><DashboardLayout></DashboardLayout></PrivetRoute>,
+    children: [
+      
+      {
+        path: 'add-course',
+        element: <AddCourse/>
+      },
+      {
+        path: 'manage-course',
+        element: <ManageCourses/>
+      },
+      {
+        path: 'my-enrolled',
+        element: <MyEnrolled/>
+      },
+      {
+        path: 'manage-message',
+        element: <ManageMessages/>
+      }
+    ]
+  },
+
   {
     path: '/*',
     element: <NotFoundPage></NotFoundPage>
