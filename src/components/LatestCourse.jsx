@@ -9,7 +9,7 @@ const LatestCourse = () => {
 
   useEffect(() => {
     setLoading(true)
-    axios.get('https://https://coursemanagementserver-production.up.railway.app/latest-course')
+    axios.get('https://coursemanagementserver-production.up.railway.app/latest-course')
       .then(res => {
         setCourses(res.data);
         setLoading(false)
